@@ -34,11 +34,12 @@ def findBealeMetqe(metqe):
         return f"{months[1]} 30"
 
 
-def findTewsak():
-    pass
+def findTewsak(bealeMetqe):
+    m, d = bealeMetqe.split()
+    return eleteTwesag[findNameOfTheDay(d, m, ameteTotal)]
 
 
-def findMebajaHamer():
+def findMebajaHamer(tewsak):
     pass
 
 
@@ -50,15 +51,24 @@ def findAmeteWengel():
     pass
 
 
-def findNameOfTheDay(month, ameteMihiret):
-    pass
+def findNameOfTheDay(day, month, ameteTotal):
+    a = yon[newYearDayName[findNewYear(ameteTotal)]]
+    b = astifeWer[month]
+    c = day
+    return nameOfTheDay[a+b+c]
 
 
 def findAmeteWengel():
     pass
 
 
-eleteTwesag = []
+eleteTwesag = {'እሁድ': 7,
+               'ሰኞ': 6,
+               'ማክሰኞ': 5,
+               'ረቡዕ': 4,
+               'ሐሙስ': 3,
+               'አርብ': 2,
+               'ቅዳሜ': 8}
 ameteWengelList = {0: 'ዘመነ ዮሐንስ',
                    1: 'ዘመነ ማቴዎስ',
                    2: 'ዘመነ ማርቆስ',
@@ -84,7 +94,27 @@ months = {1: 'መስከረም',
           11: 'ሀምሌ',
           12: 'ነሐሴ',
           13: 'ጷግሜ'}
-findNameOfTheDayDict = {1: ''}
+yon = {'እሁድ': 5,
+       'ሰኞ': 6,
+       'ማክሰኞ': 7,
+       'ረቡዕ': 1,
+       'ሐሙስ': 2,
+       'አርብ': 3,
+       'ቅዳሜ': 4}
+astifeWer = {'መስከረም': 2,
+             'ጥቅምት': 4,
+             'ህዳር': 6,
+             'ታህሳስ': 8,
+             'ጥር': 10,
+             'የካቲት': 12,
+             'መጋቢት': 14,
+             'ሚያዝያ': 16,
+             'ግንቦት': 18,
+             'ሰኔ': 20,
+             'ሀምሌ': 22,
+             'ነሐሴ': 24}
+nameOfTheDay = newYearDayName
+
 
 ameteMihiret = int(input())
 ameteAlem = 5500+ameteMihiret
@@ -96,4 +126,5 @@ wenber = findWenber(medeb)
 abeqte = findAbeqte(wenber)
 metqe = findMetqe(abeqte)
 bealeMetqe = findBealeMetqe(metqe)
-print(newYearDay, medeb, wenber, abeqte, metqe, bealeMetqe)
+tewsak = findTewsak(bealeMetqe)
+mebajaHamer = 0
