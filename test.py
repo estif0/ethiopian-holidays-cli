@@ -43,8 +43,16 @@ def findMebajaHamer(tewsak):
     return tewsak if tewsak == 0 or tewsak == 30 else (metqe+tewsak) % 30
 
 
-def TsomeNenewe():
-    pass
+def findTsomeNenewe(bealeMetqe, mebajaHamer):
+    m, d = bealeMetqe.split()
+    if int(d) == 0 or int(d) == 30:
+        return f"የካቲት {mebajaHamer}"
+    elif mebajaHamer > 30:
+        return f"የካቲት {mebajaHamer%30}"
+    elif m == "መስከረም":
+        return f"ጥር {mebajaHamer}"
+    elif m == "ጥቅምት":
+        return f"የካቲት {mebajaHamer}"
 
 
 def findAmeteWengel():
@@ -57,10 +65,6 @@ def findNameOfTheDay(day, month, ameteTotal):
     c = day
     d = (a+b+c) % 7
     return nameOfTheDay[d]
-
-
-def findAmeteWengel():
-    pass
 
 
 eleteTwesag = {'እሁድ': 7,
@@ -129,3 +133,4 @@ metqe = findMetqe(abeqte)
 bealeMetqe = findBealeMetqe(metqe)
 tewsak = findTewsak(bealeMetqe)
 mebajaHamer = findMebajaHamer(tewsak)
+tsomeNenewe = findTsomeNenewe(bealeMetqe, mebajaHamer)
