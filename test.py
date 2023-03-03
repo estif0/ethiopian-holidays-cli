@@ -36,11 +36,11 @@ def findBealeMetqe(metqe):
 
 def findTewsak(bealeMetqe):
     m, d = bealeMetqe.split()
-    return eleteTwesag[findNameOfTheDay(d, m, ameteTotal)]
+    return eleteTwesag[findNameOfTheDay(int(d), m, ameteTotal)]
 
 
 def findMebajaHamer(tewsak):
-    pass
+    return tewsak if tewsak == 0 or tewsak == 30 else (metqe+tewsak) % 30
 
 
 def TsomeNenewe():
@@ -55,7 +55,8 @@ def findNameOfTheDay(day, month, ameteTotal):
     a = yon[newYearDayName[findNewYear(ameteTotal)]]
     b = astifeWer[month]
     c = day
-    return nameOfTheDay[a+b+c]
+    d = (a+b+c) % 7
+    return nameOfTheDay[d]
 
 
 def findAmeteWengel():
@@ -127,4 +128,4 @@ abeqte = findAbeqte(wenber)
 metqe = findMetqe(abeqte)
 bealeMetqe = findBealeMetqe(metqe)
 tewsak = findTewsak(bealeMetqe)
-mebajaHamer = 0
+mebajaHamer = findMebajaHamer(tewsak)
