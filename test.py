@@ -2,13 +2,6 @@ def findNewYear(ameteTotal):
     return ameteTotal % 7
 
 
-ZemeneWengel = 0
-
-
-class Date:
-    pass
-
-
 def findMedeb(ameteAlem):
     return ameteAlem % 19
 
@@ -56,7 +49,7 @@ def findTsomeNenewe(bealeMetqe, mebajaHamer):
 
 
 def findAmeteWengel():
-    pass
+    return ameteWengelList[ameteAlem % 4]
 
 
 def findNameOfTheDay(day, month, ameteTotal):
@@ -67,6 +60,14 @@ def findNameOfTheDay(day, month, ameteTotal):
     return nameOfTheDay[d]
 
 
+""" def findAbiyTsom(mebajaHamer):
+    sum = eyweredEyareg["abiyTsom"][0] + mebajaHamer
+    if 1 <= sum < 30:
+        return f"የካቲት {sum}"
+    elif sum >= 30:
+        return f"መጋቢት {sum%30}" """
+
+
 eleteTwesag = {'እሁድ': 7,
                'ሰኞ': 6,
                'ማክሰኞ': 5,
@@ -74,10 +75,12 @@ eleteTwesag = {'እሁድ': 7,
                'ሐሙስ': 3,
                'አርብ': 2,
                'ቅዳሜ': 8}
+
 ameteWengelList = {0: 'ዘመነ ዮሐንስ',
                    1: 'ዘመነ ማቴዎስ',
                    2: 'ዘመነ ማርቆስ',
                    3: 'ዘመነ ሉቃስ'}
+
 newYearDayName = {1: 'እሁድ',
                   2: 'ሰኞ',
                   3: 'ማክሰኞ',
@@ -85,7 +88,9 @@ newYearDayName = {1: 'እሁድ',
                   5: 'ሐሙስ',
                   6: 'አርብ',
                   0: 'ቅዳሜ'}
+
 consistentHolidays = []
+
 months = {1: 'መስከረም',
           2: 'ጥቅምት',
           3: 'ህዳር',
@@ -99,6 +104,7 @@ months = {1: 'መስከረም',
           11: 'ሀምሌ',
           12: 'ነሐሴ',
           13: 'ጷግሜ'}
+
 yon = {'እሁድ': 5,
        'ሰኞ': 6,
        'ማክሰኞ': 7,
@@ -106,6 +112,7 @@ yon = {'እሁድ': 5,
        'ሐሙስ': 2,
        'አርብ': 3,
        'ቅዳሜ': 4}
+
 astifeWer = {'መስከረም': 2,
              'ጥቅምት': 4,
              'ህዳር': 6,
@@ -118,9 +125,24 @@ astifeWer = {'መስከረም': 2,
              'ሰኔ': 20,
              'ሀምሌ': 22,
              'ነሐሴ': 24}
+
 nameOfTheDay = newYearDayName
 
+eyweredEyareg = {"abiyTsom": [14, ["የካቲት", "መጋቢት"]],  # 1,5
+                 "debreZeyit": [11, ["የካቲት", "መጋቢት", "ሚያዝያ"]],  # 1,2
+                 "hosaina": [2, ["መጋቢት", "ሚያዝያ"]],  # 19,23
+                 "seqlet": [7, ["መጋቢት", "ሚያዝያ"]],  # 24,28
+                 "fasika": [9, ["መጋቢት", "ሚያዝያ"]],  # 26,30
+                 "erkibeKahinat": [3, ["ሚያዝያ", "ግንቦት"]],  # 20,24
+                 "erget": [18, ["ግንቦት", "ሰኔ"]],  # 5,9
+                 "peraclitos": [28, ["ግንቦት", "ሰኔ"]],  # 15,19
+                 "tsomeHawariyat": [29, ["ግንቦት", "ሰኔ"]],  # 16,20
+                 "tsomeDihinet": [1, ["ግንቦት", "ሰኔ"]],  # 18,22
 
+                 }
+
+
+# Start of the code:
 ameteMihiret = int(input())
 ameteAlem = 5500+ameteMihiret
 ameteWengel, meteneRabit = [ameteWengelList[ameteAlem % 4], ameteAlem//4]
@@ -134,3 +156,4 @@ bealeMetqe = findBealeMetqe(metqe)
 tewsak = findTewsak(bealeMetqe)
 mebajaHamer = findMebajaHamer(tewsak)
 tsomeNenewe = findTsomeNenewe(bealeMetqe, mebajaHamer)
+abiyTsom = findAbiyTsom(mebajaHamer)
