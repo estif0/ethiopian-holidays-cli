@@ -145,9 +145,20 @@ def findTheDayOfTheHoliday(beal):
     if dayOfTheHoliday >= 30:
         dayOfTheHoliday = dayOfTheHoliday % 30
     if eyweredEyareg[beal][2] <= dayOfTheHoliday <= 30:
-        return f"{eyweredEyareg[beal][1][0]} {dayOfTheHoliday}"
+        MDHoliday = f"{eyweredEyareg[beal][1][0]} {dayOfTheHoliday}"
     elif 1 <= dayOfTheHoliday <= eyweredEyareg[beal][3]:
-        return f"{eyweredEyareg[beal][1][1]} {dayOfTheHoliday}"
+        MDHoliday = f"{eyweredEyareg[beal][1][1]} {dayOfTheHoliday}"
+
+    return f"{findNameOfTheDayForHoliday(MDHoliday)} {MDHoliday}"
+
+
+def findNameOfTheDayForHoliday(monthDayString):
+    month, day = monthDayString.split()
+    a = yon[newYearDayName[findNewYear(ameteTotal)]]
+    b = astifeWer[month]
+    c = int(day)
+    d = (a+b+c) % 7
+    return nameOfTheDay[d]
 
 
 # Start of the code:
@@ -164,15 +175,6 @@ bealeMetqe = findBealeMetqe(metqe)
 tewsak = findTewsak(bealeMetqe)
 mebajaHamer = findMebajaHamer(tewsak)
 tsomeNenewe = findTsomeNenewe(bealeMetqe, mebajaHamer)
-print(ameteAlem)
-print(ameteWengel)
-print(ameteTotal)
-print(newYearDay)
-print(medeb)
-print(wenber)
-print(abeqte)
-print(metqe)
-print(bealeMetqe)
-print(tewsak)
-print(mebajaHamer)
-print(tsomeNenewe)
+while 1:
+    beal = input()
+    print(findTheDayOfTheHoliday(beal))
