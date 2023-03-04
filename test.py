@@ -29,7 +29,7 @@ def findBealeMetqe(metqe):
 
 def findTewsak(bealeMetqe):
     m, d = bealeMetqe.split()
-    return eleteTwesag[findNameOfTheDay(int(d), m, ameteTotal)]
+    return eleteTwesag[findNameOfTheDay(int(d), m)]
 
 
 def findMebajaHamer(tewsak):
@@ -52,7 +52,7 @@ def findAmeteWengel():
     return ameteWengelList[ameteAlem % 4]
 
 
-def findNameOfTheDay(day, month, ameteTotal):
+def findNameOfTheDay(day, month):
     a = yon[newYearDayName[findNewYear(ameteTotal)]]
     b = astifeWer[month]
     c = day
@@ -60,12 +60,12 @@ def findNameOfTheDay(day, month, ameteTotal):
     return nameOfTheDay[d]
 
 
-""" def findAbiyTsom(mebajaHamer):
+def findAbiyTsom(mebajaHamer):
     sum = eyweredEyareg["abiyTsom"][0] + mebajaHamer
     if 1 <= sum < 30:
         return f"የካቲት {sum}"
     elif sum >= 30:
-        return f"መጋቢት {sum%30}" """
+        return f"መጋቢት {sum%30}"
 
 
 eleteTwesag = {'እሁድ': 7,
@@ -128,18 +128,26 @@ astifeWer = {'መስከረም': 2,
 
 nameOfTheDay = newYearDayName
 
-eyweredEyareg = {"abiyTsom": [14, ["የካቲት", "መጋቢት"]],  # 1,5
-                 "debreZeyit": [11, ["የካቲት", "መጋቢት", "ሚያዝያ"]],  # 1,2
-                 "hosaina": [2, ["መጋቢት", "ሚያዝያ"]],  # 19,23
-                 "seqlet": [7, ["መጋቢት", "ሚያዝያ"]],  # 24,28
-                 "fasika": [9, ["መጋቢት", "ሚያዝያ"]],  # 26,30
-                 "erkibeKahinat": [3, ["ሚያዝያ", "ግንቦት"]],  # 20,24
-                 "erget": [18, ["ግንቦት", "ሰኔ"]],  # 5,9
-                 "peraclitos": [28, ["ግንቦት", "ሰኔ"]],  # 15,19
-                 "tsomeHawariyat": [29, ["ግንቦት", "ሰኔ"]],  # 16,20
-                 "tsomeDihinet": [1, ["ግንቦት", "ሰኔ"]],  # 18,22
+eyweredEyareg = {"abiyTsom": [14, ["የካቲት", "መጋቢት"], 1, 5],
+                 "debreZeyit": [11, ["የካቲት", "መጋቢት", "ሚያዝያ"], 1, 2],
+                 "hosaina": [2, ["መጋቢት", "ሚያዝያ"], 19, 23],
+                 "seqlet": [7, ["መጋቢት", "ሚያዝያ"], 24, 28],
+                 "fasika": [9, ["መጋቢት", "ሚያዝያ"], 26, 30],
+                 "erkibeKahinat": [3, ["ሚያዝያ", "ግንቦት"], 20, 24],
+                 "erget": [18, ["ግንቦት", "ሰኔ"], 5, 9],
+                 "peraclitos": [28, ["ግንቦት", "ሰኔ"], 15, 19],
+                 "tsomeHawariyat": [29, ["ግንቦት", "ሰኔ"], 16, 20],
+                 "tsomeDihinet": [1, ["ግንቦት", "ሰኔ"], 18, 22], }
 
-                 }
+
+def findTheDayOfTheHoliday(beal):
+    dayOfTheHoliday = eyweredEyareg[beal][0]+mebajaHamer
+    if dayOfTheHoliday >= 30:
+        dayOfTheHoliday = dayOfTheHoliday % 30
+    if eyweredEyareg[beal][2] <= dayOfTheHoliday <= 30:
+        return f"{eyweredEyareg[beal][1][0]} {dayOfTheHoliday}"
+    elif 1 <= dayOfTheHoliday <= eyweredEyareg[beal][3]:
+        return f"{eyweredEyareg[beal][1][1]} {dayOfTheHoliday}"
 
 
 # Start of the code:
@@ -156,4 +164,15 @@ bealeMetqe = findBealeMetqe(metqe)
 tewsak = findTewsak(bealeMetqe)
 mebajaHamer = findMebajaHamer(tewsak)
 tsomeNenewe = findTsomeNenewe(bealeMetqe, mebajaHamer)
-abiyTsom = findAbiyTsom(mebajaHamer)
+print(ameteAlem)
+print(ameteWengel)
+print(ameteTotal)
+print(newYearDay)
+print(medeb)
+print(wenber)
+print(abeqte)
+print(metqe)
+print(bealeMetqe)
+print(tewsak)
+print(mebajaHamer)
+print(tsomeNenewe)
