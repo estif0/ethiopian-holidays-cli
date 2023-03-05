@@ -60,12 +60,28 @@ def findNameOfTheDay(day, month):
     return nameOfTheDay[d]
 
 
-def findAbiyTsom(mebajaHamer):
-    sum = eyweredEyareg["abiyTsom"][0] + mebajaHamer
-    if 1 <= sum < 30:
-        return f"የካቲት {sum}"
-    elif sum >= 30:
-        return f"መጋቢት {sum%30}"
+def findTheDayOfTheHoliday(beal):
+    dayOfTheHoliday = eyweredEyareg[beal][0]+mebajaHamer
+    if dayOfTheHoliday > 30:
+        dayOfTheHoliday = dayOfTheHoliday % 30
+    if eyweredEyareg[beal][2] <= dayOfTheHoliday <= 30:
+        MDHoliday = f"{eyweredEyareg[beal][1][0]} {dayOfTheHoliday}"
+    elif 1 <= dayOfTheHoliday <= eyweredEyareg[beal][3]:
+        MDHoliday = f"{eyweredEyareg[beal][1][1]} {dayOfTheHoliday}"
+
+    return f"{findNameOfTheDayForHoliday(MDHoliday)} {MDHoliday}"
+
+
+def findNameOfTheDayForHoliday(monthDayString):
+    month, day = monthDayString.split()
+    a = yon[newYearDayName[findNewYear(ameteTotal)]]
+    b = astifeWer[month]
+    c = int(day)
+    d = (a+b+c) % 7
+    return nameOfTheDay[d]
+
+
+consistentHolidays = []
 
 
 eleteTwesag = {'እሁድ': 7,
@@ -89,7 +105,6 @@ newYearDayName = {1: 'እሁድ',
                   6: 'አርብ',
                   0: 'ቅዳሜ'}
 
-consistentHolidays = []
 
 months = {1: 'መስከረም',
           2: 'ጥቅምት',
@@ -129,7 +144,7 @@ astifeWer = {'መስከረም': 2,
 nameOfTheDay = newYearDayName
 
 eyweredEyareg = {"abiyTsom": [14, ["የካቲት", "መጋቢት"], 1, 5],
-                 "debreZeyit": [11, ["የካቲት", "መጋቢት", "ሚያዝያ"], 1, 2],
+                 "debreZeyit": [11, ["የካቲት", "መጋቢት", "ሚያዝያ"], 28, 2],
                  "hosaina": [2, ["መጋቢት", "ሚያዝያ"], 19, 23],
                  "seqlet": [7, ["መጋቢት", "ሚያዝያ"], 24, 28],
                  "fasika": [9, ["መጋቢት", "ሚያዝያ"], 26, 30],
@@ -140,25 +155,18 @@ eyweredEyareg = {"abiyTsom": [14, ["የካቲት", "መጋቢት"], 1, 5],
                  "tsomeDihinet": [1, ["ግንቦት", "ሰኔ"], 18, 22], }
 
 
-def findTheDayOfTheHoliday(beal):
+def findDebireZeyit(beal):  # non-functional function
     dayOfTheHoliday = eyweredEyareg[beal][0]+mebajaHamer
-    if dayOfTheHoliday >= 30:
-        dayOfTheHoliday = dayOfTheHoliday % 30
     if eyweredEyareg[beal][2] <= dayOfTheHoliday <= 30:
         MDHoliday = f"{eyweredEyareg[beal][1][0]} {dayOfTheHoliday}"
-    elif 1 <= dayOfTheHoliday <= eyweredEyareg[beal][3]:
+    elif 31 <= dayOfTheHoliday <= 60:
+        dayOfTheHoliday %= 30
         MDHoliday = f"{eyweredEyareg[beal][1][1]} {dayOfTheHoliday}"
+    elif 61 <= dayOfTheHoliday <= eyweredEyareg[beal][3]:
+        dayOfTheHoliday %= 30
+        MDHoliday = f"{eyweredEyareg[beal][1][2]} {dayOfTheHoliday}"
 
     return f"{findNameOfTheDayForHoliday(MDHoliday)} {MDHoliday}"
-
-
-def findNameOfTheDayForHoliday(monthDayString):
-    month, day = monthDayString.split()
-    a = yon[newYearDayName[findNewYear(ameteTotal)]]
-    b = astifeWer[month]
-    c = int(day)
-    d = (a+b+c) % 7
-    return nameOfTheDay[d]
 
 
 # Start of the code:
@@ -175,6 +183,42 @@ bealeMetqe = findBealeMetqe(metqe)
 tewsak = findTewsak(bealeMetqe)
 mebajaHamer = findMebajaHamer(tewsak)
 tsomeNenewe = findTsomeNenewe(bealeMetqe, mebajaHamer)
-while 1:
-    beal = input()
-    print(findTheDayOfTheHoliday(beal))
+abiyTsom = findTheDayOfTheHoliday('abiyTsom')
+hosaina = findTheDayOfTheHoliday('hosaina')
+seqlet = findTheDayOfTheHoliday('seqlet')
+fasika = findTheDayOfTheHoliday('fasika')
+erkibeKahinat = findTheDayOfTheHoliday('erkibeKahinat')
+erget = findTheDayOfTheHoliday('erget')
+peraclitos = findTheDayOfTheHoliday('peraclitos')
+tsomeHawariyat = findTheDayOfTheHoliday('tsomeHawariyat')
+tsomeDihinet = findTheDayOfTheHoliday('tsomeDihinet')
+gena = "ታህሳስ 29" if ameteWengel != 'ዘመነ ዮሐንስ' else "ታህሳስ 28"
+timket = "ጥር 11"
+bealeTsinset = "መጋቢት 29"
+bealeSimeon = "የካቲት 8"
+bealeGirizat = "ጥር 6"
+derbreTabor = "ነሐሴ 13"
+TsomeLidet = "ህዳር 16" if ameteWengel != 'ዘመነ ዮሐንስ' else "ህዳር 15"
+dayOfTimket = findNameOfTheDayForHoliday(timket)
+TsomeGehad = "ጥር 10" if dayOfTimket == 'አርብ' or dayOfTimket == 'ረቡዕ' else 'የለም'
+tsomeFilseta = "ነሐሴ 1"
+
+
+print(f"""
+-------------------------------------------------------------------------------------------------------------------------------
+|                                                   {ameteMihiret} ዓ.ም                                                        |
+-------------------------------------------------------------------------------------------------------------------------------
+|                                         |                                         |                                         |
+|                                         |                                         |                                         |
+|                                         |                                         |                                         |
+|                                         |                                         |                                         |
+|                                         |                                         |                                         |
+|                                         |                                         |                                         |
+|                                         |                                         |                                         |
+|                                         |                                         |                                         |
+|                                         |                                         |                                         |
+|                                         |                                         |                                         |
+|                                         |                                         |                                         |
+|                                         |                                         |                                         |
+-------------------------------------------------------------------------------------------------------------------------------
+""")
