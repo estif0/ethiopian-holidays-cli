@@ -155,15 +155,15 @@ eyweredEyareg = {"abiyTsom": [14, ["የካቲት", "መጋቢት"], 1, 5],
                  "tsomeDihinet": [1, ["ግንቦት", "ሰኔ"], 18, 22], }
 
 
-def findDebireZeyit(beal):  # non-functional function
+def findDebireZeyit(beal):  # unfinished function
     dayOfTheHoliday = eyweredEyareg[beal][0]+mebajaHamer
+    if dayOfTheHoliday > 30:
+        dayOfTheHoliday %= 30
     if eyweredEyareg[beal][2] <= dayOfTheHoliday <= 30:
         MDHoliday = f"{eyweredEyareg[beal][1][0]} {dayOfTheHoliday}"
-    elif 31 <= dayOfTheHoliday <= 60:
-        dayOfTheHoliday %= 30
+    elif 1 <= dayOfTheHoliday <= 30:
         MDHoliday = f"{eyweredEyareg[beal][1][1]} {dayOfTheHoliday}"
-    elif 61 <= dayOfTheHoliday <= eyweredEyareg[beal][3]:
-        dayOfTheHoliday %= 30
+    elif 1 <= dayOfTheHoliday <= eyweredEyareg[beal][3]:
         MDHoliday = f"{eyweredEyareg[beal][1][2]} {dayOfTheHoliday}"
 
     return f"{findNameOfTheDayForHoliday(MDHoliday)} {MDHoliday}"
@@ -202,13 +202,13 @@ TsomeLidet = "ህዳር 16" if ameteWengel != 'ዘመነ ዮሐንስ' else "ህ
 dayOfTimket = findNameOfTheDayForHoliday(timket)
 TsomeGehad = "ጥር 10" if dayOfTimket == 'አርብ' or dayOfTimket == 'ረቡዕ' else 'የለም'
 tsomeFilseta = "ነሐሴ 1"
-
+debreZeyit = findDebireZeyit("debreZeyit")
 
 print(f"""
 -------------------------------------------------------------------------------------------------------------------------------
 |                                                   {ameteMihiret} ዓ.ም                                                        |
 -------------------------------------------------------------------------------------------------------------------------------
-|                                         |                                         |                                         |
+|       {debreZeyit}                    |                                         |                                         |
 |                                         |                                         |                                         |
 |                                         |                                         |                                         |
 |                                         |                                         |                                         |
