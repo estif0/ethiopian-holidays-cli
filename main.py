@@ -1,3 +1,6 @@
+from tabulate import tabulate
+
+
 def findNewYear(ameteTotal):
     return ameteTotal % 7
 
@@ -170,11 +173,11 @@ def findDebireZeyit(beal):  # unfinished function
 
 
 # Start of the code:
-ameteMihiret = int(input())
+ameteMihiret = int(input("Enter the year: "))
 ameteAlem = 5500+ameteMihiret
 ameteWengel, meteneRabit = [ameteWengelList[ameteAlem % 4], ameteAlem//4]
 ameteTotal = ameteAlem+meteneRabit+2
-newYearDay = f"{newYearDayName[findNewYear(ameteTotal)]} {months[1]} 1 {ameteMihiret} E.C."
+newYearDay = f"{newYearDayName[findNewYear(ameteTotal)]} {months[1]} 1"
 medeb = findMedeb(ameteAlem)
 wenber = findWenber(medeb)
 abeqte = findAbeqte(wenber)
@@ -182,7 +185,7 @@ metqe = findMetqe(abeqte)
 bealeMetqe = findBealeMetqe(metqe)
 tewsak = findTewsak(bealeMetqe)
 mebajaHamer = findMebajaHamer(tewsak)
-tsomeNenewe = findTsomeNenewe(bealeMetqe, mebajaHamer)
+tsomeNenewe = f"{findNameOfTheDayForHoliday(findTsomeNenewe(bealeMetqe, mebajaHamer))} {findTsomeNenewe(bealeMetqe, mebajaHamer)}"
 abiyTsom = findTheDayOfTheHoliday('abiyTsom')
 hosaina = findTheDayOfTheHoliday('hosaina')
 seqlet = findTheDayOfTheHoliday('seqlet')
@@ -192,33 +195,25 @@ erget = findTheDayOfTheHoliday('erget')
 peraclitos = findTheDayOfTheHoliday('peraclitos')
 tsomeHawariyat = findTheDayOfTheHoliday('tsomeHawariyat')
 tsomeDihinet = findTheDayOfTheHoliday('tsomeDihinet')
-gena = "ታህሳስ 29" if ameteWengel != 'ዘመነ ዮሐንስ' else "ታህሳስ 28"
-timket = "ጥር 11"
-bealeTsinset = "መጋቢት 29"
-bealeSimeon = "የካቲት 8"
-bealeGirizat = "ጥር 6"
-derbreTabor = "ነሐሴ 13"
-TsomeLidet = "ህዳር 16" if ameteWengel != 'ዘመነ ዮሐንስ' else "ህዳር 15"
-dayOfTimket = findNameOfTheDayForHoliday(timket)
-TsomeGehad = "ጥር 10" if dayOfTimket == 'አርብ' or dayOfTimket == 'ረቡዕ' else 'የለም'
-tsomeFilseta = "ነሐሴ 1"
+gena = f"{findNameOfTheDayForHoliday('ታህሳስ 29')} ታህሳስ 29" if ameteWengel != 'ዘመነ ዮሐንስ' else f"{findNameOfTheDayForHoliday('ታህሳስ 28')} ታህሳስ 28"
+timket = f"{findNameOfTheDayForHoliday('ጥር 11')} ጥር 11"
+kanaZegelila = f"{findNameOfTheDayForHoliday('ጥር 12')} ጥር 12"
+mesqel = f"{findNameOfTheDayForHoliday('መስከረም 17')} መስከረም 17"
+bealeTsinset = f"{findNameOfTheDayForHoliday('መጋቢት 29')} መጋቢት 29"
+bealeSimeon = f"{findNameOfTheDayForHoliday('የካቲት 8')} የካቲት 8"
+bealeGirizat = f"{findNameOfTheDayForHoliday('ጥር 6')} ጥር 6"
+genbotLidata = f"{findNameOfTheDayForHoliday('ግንቦት 1')} ግንቦት 1"
+derbreTabor = f"{findNameOfTheDayForHoliday('ነሐሴ 13')} ነሐሴ 13"
+TsomeLidet = f"{findNameOfTheDayForHoliday('ህዳር 16')} ህዳር 16" if ameteWengel != 'ዘመነ ዮሐንስ' else f"{findNameOfTheDayForHoliday('ህዳር 15')} ህዳር 15"
+dayOfTimket = findNameOfTheDayForHoliday('ጥር 11')
+TsomeGehad = f"{findNameOfTheDayForHoliday('ጥር 10')} ጥር 10" if dayOfTimket == 'አርብ' or dayOfTimket == 'ረቡዕ' else 'የለም'
+tsomeFilseta = f"{findNameOfTheDayForHoliday('ነሐሴ 1')} ነሐሴ 1"
+tsomeFilsetaMefchiya = f"{findNameOfTheDayForHoliday('ነሐሴ 16')} ነሐሴ 16"
 debreZeyit = findDebireZeyit("debreZeyit")
 
-print(f"""
--------------------------------------------------------------------------------------------------------------------------------
-|                                                   {ameteMihiret} ዓ.ም                                                        |
--------------------------------------------------------------------------------------------------------------------------------
-|       {debreZeyit}                    |                                         |                                         |
-|                                         |                                         |                                         |
-|                                         |                                         |                                         |
-|                                         |                                         |                                         |
-|                                         |                                         |                                         |
-|                                         |                                         |                                         |
-|                                         |                                         |                                         |
-|                                         |                                         |                                         |
-|                                         |                                         |                                         |
-|                                         |                                         |                                         |
-|                                         |                                         |                                         |
-|                                         |                                         |                                         |
--------------------------------------------------------------------------------------------------------------------------------
-""")
+printTitleList = ["እንቁጣጣሽ", "መስቅል", "የገና ፆም", "ገና", "ጾመ ገሃድ", "ጥምቀት", "ቃና ዘገሊላ", "ጾመ ነነዌ", "በዓለ ስምዖን",
+                  "ጾመ አብይ(ሁዳዴ)", "በአለ መስቀል ደብረዘይት", "በዓለ ትንሰት", "ሆሳዕና", "ስቅለት", "ፋሲካ", "ግንቦት ልደታ", "ርክበ ካህናት", "ዕርገት", "ጰራቅሊጦስ", "ጾመ ሃዋርያት(የሰኔ ጾም)", "ጾመ ድህነት", "ጾመ ፍልሰታ", "ደብልታቦር(ቡሄ)", "ጾመ ፍልሰታ መፍቻ",]
+printValueList = [newYearDay, mesqel, TsomeLidet, gena, TsomeGehad, timket, kanaZegelila, tsomeNenewe, bealeSimeon, abiyTsom, debreZeyit, bealeTsinset,
+                  hosaina, seqlet, fasika, genbotLidata, erkibeKahinat, erget, peraclitos, tsomeHawariyat, tsomeDihinet, tsomeFilseta, derbreTabor, tsomeFilsetaMefchiya]
+print(tabulate({"የበዓላት ስም": printTitleList,
+                "የሚውሉበት ቀናት": printValueList}, headers="keys", tablefmt="fancy_grid"))
