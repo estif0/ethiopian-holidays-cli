@@ -172,48 +172,66 @@ def findDebireZeyit(beal):  # unfinished function
     return f"{findNameOfTheDayForHoliday(MDHoliday)} {MDHoliday}"
 
 
-# Start of the code:
-ameteMihiret = int(input("Enter the year: "))
-ameteAlem = 5500+ameteMihiret
-ameteWengel, meteneRabit = [ameteWengelList[ameteAlem % 4], ameteAlem//4]
-ameteTotal = ameteAlem+meteneRabit+2
-newYearDay = f"{newYearDayName[findNewYear(ameteTotal)]} {months[1]} 1"
-medeb = findMedeb(ameteAlem)
-wenber = findWenber(medeb)
-abeqte = findAbeqte(wenber)
-metqe = findMetqe(abeqte)
-bealeMetqe = findBealeMetqe(metqe)
-tewsak = findTewsak(bealeMetqe)
-mebajaHamer = findMebajaHamer(tewsak)
-tsomeNenewe = f"{findNameOfTheDayForHoliday(findTsomeNenewe(bealeMetqe, mebajaHamer))} {findTsomeNenewe(bealeMetqe, mebajaHamer)}"
-abiyTsom = findTheDayOfTheHoliday('abiyTsom')
-hosaina = findTheDayOfTheHoliday('hosaina')
-seqlet = findTheDayOfTheHoliday('seqlet')
-fasika = findTheDayOfTheHoliday('fasika')
-erkibeKahinat = findTheDayOfTheHoliday('erkibeKahinat')
-erget = findTheDayOfTheHoliday('erget')
-peraclitos = findTheDayOfTheHoliday('peraclitos')
-tsomeHawariyat = findTheDayOfTheHoliday('tsomeHawariyat')
-tsomeDihinet = findTheDayOfTheHoliday('tsomeDihinet')
-gena = f"{findNameOfTheDayForHoliday('ታህሳስ 29')} ታህሳስ 29" if ameteWengel != 'ዘመነ ዮሐንስ' else f"{findNameOfTheDayForHoliday('ታህሳስ 28')} ታህሳስ 28"
-timket = f"{findNameOfTheDayForHoliday('ጥር 11')} ጥር 11"
-kanaZegelila = f"{findNameOfTheDayForHoliday('ጥር 12')} ጥር 12"
-mesqel = f"{findNameOfTheDayForHoliday('መስከረም 17')} መስከረም 17"
-bealeTsinset = f"{findNameOfTheDayForHoliday('መጋቢት 29')} መጋቢት 29"
-bealeSimeon = f"{findNameOfTheDayForHoliday('የካቲት 8')} የካቲት 8"
-bealeGirizat = f"{findNameOfTheDayForHoliday('ጥር 6')} ጥር 6"
-genbotLidata = f"{findNameOfTheDayForHoliday('ግንቦት 1')} ግንቦት 1"
-derbreTabor = f"{findNameOfTheDayForHoliday('ነሐሴ 13')} ነሐሴ 13"
-TsomeLidet = f"{findNameOfTheDayForHoliday('ህዳር 16')} ህዳር 16" if ameteWengel != 'ዘመነ ዮሐንስ' else f"{findNameOfTheDayForHoliday('ህዳር 15')} ህዳር 15"
-dayOfTimket = findNameOfTheDayForHoliday('ጥር 11')
-TsomeGehad = f"{findNameOfTheDayForHoliday('ጥር 10')} ጥር 10" if dayOfTimket == 'አርብ' or dayOfTimket == 'ረቡዕ' else 'የለም'
-tsomeFilseta = f"{findNameOfTheDayForHoliday('ነሐሴ 1')} ነሐሴ 1"
-tsomeFilsetaMefchiya = f"{findNameOfTheDayForHoliday('ነሐሴ 16')} ነሐሴ 16"
-debreZeyit = findDebireZeyit("debreZeyit")
+def enter():
+    try:
+        global ameteMihiret
+        ameteMihiret = int(input("Enter the year: "))
+    except:
+        print("Please enter a valid Year!")
+        enter()
 
-printTitleList = ["እንቁጣጣሽ", "መስቅል", "የገና ፆም", "ገና", "ጾመ ገሃድ", "ጥምቀት", "ቃና ዘገሊላ", "ጾመ ነነዌ", "በዓለ ስምዖን",
-                  "ጾመ አብይ(ሁዳዴ)", "በአለ መስቀል ደብረዘይት", "በዓለ ትንሰት", "ሆሳዕና", "ስቅለት", "ፋሲካ", "ግንቦት ልደታ", "ርክበ ካህናት", "ዕርገት", "ጰራቅሊጦስ", "ጾመ ሃዋርያት(የሰኔ ጾም)", "ጾመ ድህነት", "ጾመ ፍልሰታ", "ደብልታቦር(ቡሄ)", "ጾመ ፍልሰታ መፍቻ",]
-printValueList = [newYearDay, mesqel, TsomeLidet, gena, TsomeGehad, timket, kanaZegelila, tsomeNenewe, bealeSimeon, abiyTsom, debreZeyit, bealeTsinset,
-                  hosaina, seqlet, fasika, genbotLidata, erkibeKahinat, erget, peraclitos, tsomeHawariyat, tsomeDihinet, tsomeFilseta, derbreTabor, tsomeFilsetaMefchiya]
-print(tabulate({"የበዓላት ስም": printTitleList,
-                "የሚውሉበት ቀናት": printValueList}, headers="keys", tablefmt="fancy_grid"))
+
+# Start of the code:
+print("Welcome!")
+print("This program let's you know major holidays and festivals in the ethiopian calendar.")
+while 1:
+    enter()
+    ameteAlem = 5500+ameteMihiret
+    ameteWengel, meteneRabit = [ameteWengelList[ameteAlem % 4], ameteAlem//4]
+    ameteTotal = ameteAlem+meteneRabit+2
+    newYearDay = f"{newYearDayName[findNewYear(ameteTotal)]} {months[1]} 1"
+    medeb = findMedeb(ameteAlem)
+    wenber = findWenber(medeb)
+    abeqte = findAbeqte(wenber)
+    metqe = findMetqe(abeqte)
+    bealeMetqe = findBealeMetqe(metqe)
+    tewsak = findTewsak(bealeMetqe)
+    mebajaHamer = findMebajaHamer(tewsak)
+    tsomeNenewe = f"{findNameOfTheDayForHoliday(findTsomeNenewe(bealeMetqe, mebajaHamer))} {findTsomeNenewe(bealeMetqe, mebajaHamer)}"
+    abiyTsom = findTheDayOfTheHoliday('abiyTsom')
+    hosaina = findTheDayOfTheHoliday('hosaina')
+    seqlet = findTheDayOfTheHoliday('seqlet')
+    fasika = findTheDayOfTheHoliday('fasika')
+    erkibeKahinat = findTheDayOfTheHoliday('erkibeKahinat')
+    erget = findTheDayOfTheHoliday('erget')
+    peraclitos = findTheDayOfTheHoliday('peraclitos')
+    tsomeHawariyat = findTheDayOfTheHoliday('tsomeHawariyat')
+    tsomeDihinet = findTheDayOfTheHoliday('tsomeDihinet')
+    gena = f"{findNameOfTheDayForHoliday('ታህሳስ 29')} ታህሳስ 29" if ameteWengel != 'ዘመነ ዮሐንስ' else f"{findNameOfTheDayForHoliday('ታህሳስ 28')} ታህሳስ 28"
+    timket = f"{findNameOfTheDayForHoliday('ጥር 11')} ጥር 11"
+    kanaZegelila = f"{findNameOfTheDayForHoliday('ጥር 12')} ጥር 12"
+    mesqel = f"{findNameOfTheDayForHoliday('መስከረም 17')} መስከረም 17"
+    bealeTsinset = f"{findNameOfTheDayForHoliday('መጋቢት 29')} መጋቢት 29"
+    bealeSimeon = f"{findNameOfTheDayForHoliday('የካቲት 8')} የካቲት 8"
+    bealeGirizat = f"{findNameOfTheDayForHoliday('ጥር 6')} ጥር 6"
+    genbotLidata = f"{findNameOfTheDayForHoliday('ግንቦት 1')} ግንቦት 1"
+    derbreTabor = f"{findNameOfTheDayForHoliday('ነሐሴ 13')} ነሐሴ 13"
+    TsomeLidet = f"{findNameOfTheDayForHoliday('ህዳር 16')} ህዳር 16" if ameteWengel != 'ዘመነ ዮሐንስ' else f"{findNameOfTheDayForHoliday('ህዳር 15')} ህዳር 15"
+    dayOfTimket = findNameOfTheDayForHoliday('ጥር 11')
+    TsomeGehad = f"{findNameOfTheDayForHoliday('ጥር 10')} ጥር 10" if dayOfTimket == 'አርብ' or dayOfTimket == 'ረቡዕ' else 'የለም'
+    tsomeFilseta = f"{findNameOfTheDayForHoliday('ነሐሴ 1')} ነሐሴ 1"
+    tsomeFilsetaMefchiya = f"{findNameOfTheDayForHoliday('ነሐሴ 16')} ነሐሴ 16"
+    debreZeyit = findDebireZeyit("debreZeyit")
+
+    printTitleList = ["እንቁጣጣሽ", "መስቅል", "የገና ፆም", "ገና", "ጾመ ገሃድ", "ጥምቀት", "ቃና ዘገሊላ", "ጾመ ነነዌ", "በዓለ ስምዖን",
+                      "ጾመ አብይ(ሁዳዴ)", "በአለ መስቀል ደብረዘይት", "በዓለ ትንሰት", "ሆሳዕና", "ስቅለት", "ፋሲካ", "ግንቦት ልደታ", "ርክበ ካህናት", "ዕርገት", "ጰራቅሊጦስ", "ጾመ ሃዋርያት(የሰኔ ጾም)", "ጾመ ድህነት", "ጾመ ፍልሰታ", "ደብልታቦር(ቡሄ)", "ጾመ ፍልሰታ መፍቻ",]
+    printValueList = [newYearDay, mesqel, TsomeLidet, gena, TsomeGehad, timket, kanaZegelila, tsomeNenewe, bealeSimeon, abiyTsom, debreZeyit, bealeTsinset,
+                      hosaina, seqlet, fasika, genbotLidata, erkibeKahinat, erget, peraclitos, tsomeHawariyat, tsomeDihinet, tsomeFilseta, derbreTabor, tsomeFilsetaMefchiya]
+    print(tabulate({"የበዓላት ስም": printTitleList,
+                    "የሚውሉበት ቀናት": printValueList}, headers="keys", tablefmt="fancy_grid"))
+    option = input(
+        "Do you want to continue? Press (N) to exit or press any key to continue: ")
+    if option.upper() == 'N':
+        break
+    else:
+        continue
