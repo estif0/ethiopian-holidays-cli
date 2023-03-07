@@ -1,9 +1,7 @@
 from tabulate import tabulate
 
-
 def findNewYear(ameteTotal):
     return ameteTotal % 7
-
 
 def findBealeMetqe(metqe):
     if 30 > metqe >= 15:
@@ -13,11 +11,9 @@ def findBealeMetqe(metqe):
     else:
         return f"{months[1]} 30"
 
-
 def findTewsak(bealeMetqe):
     m, d = bealeMetqe.split()
     return eleteTwesag[findNameOfTheDay(int(d), m)]
-
 
 def findTsomeNenewe(bealeMetqe, mebajaHamer):
     m, d = bealeMetqe.split()
@@ -30,14 +26,12 @@ def findTsomeNenewe(bealeMetqe, mebajaHamer):
     elif m == "ጥቅምት":
         return f"የካቲት {mebajaHamer}"
 
-
 def findNameOfTheDay(day, month):
     a = yon[newYearDayName[findNewYear(ameteTotal)]]
     b = astifeWer[month]
     c = day
     d = (a+b+c) % 7
     return nameOfTheDay[d]
-
 
 def findTheDayOfTheHoliday(beal):
     dayOfTheHoliday = eyweredEyareg[beal][0]+mebajaHamer
@@ -50,7 +44,6 @@ def findTheDayOfTheHoliday(beal):
 
     return f"{findNameOfTheDayForHoliday(MDHoliday)} {MDHoliday}"
 
-
 def findNameOfTheDayForHoliday(monthDayString):
     month, day = monthDayString.split()
     a = yon[newYearDayName[findNewYear(ameteTotal)]]
@@ -58,7 +51,6 @@ def findNameOfTheDayForHoliday(monthDayString):
     c = int(day)
     d = (a+b+c) % 7
     return nameOfTheDay[d]
-
 
 eleteTwesag = {'እሁድ': 7, 'ሰኞ': 6, 'ማክሰኞ': 5,'ረቡዕ': 4, 'ሐሙስ': 3, 'አርብ': 2, 'ቅዳሜ': 8}
 
@@ -76,7 +68,6 @@ nameOfTheDay = newYearDayName
 
 eyweredEyareg = {"abiyTsom": [14, ["የካቲት", "መጋቢት"], 1, 5], "debreZeyit": [11, ["የካቲት", "መጋቢት", "ሚያዝያ"], 28, 2], "hosaina": [2, ["መጋቢት", "ሚያዝያ"], 19, 23], "seqlet": [7, ["መጋቢት", "ሚያዝያ"], 24, 28], "fasika": [9, ["መጋቢት", "ሚያዝያ"], 26, 30], "erkibeKahinat": [3, ["ሚያዝያ", "ግንቦት"], 20, 24], "erget": [18, ["ግንቦት", "ሰኔ"], 5, 9], "peraclitos": [28, ["ግንቦት", "ሰኔ"], 15, 19], "tsomeHawariyat": [29, ["ግንቦት", "ሰኔ"], 16, 20], "tsomeDihinet": [1, ["ግንቦት", "ሰኔ"], 18, 22], }
 
-
 def findDebireZeyit(beal):  # unfinished function
     dayOfTheHoliday = eyweredEyareg[beal][0]+mebajaHamer
     if dayOfTheHoliday > 30:
@@ -89,7 +80,6 @@ def findDebireZeyit(beal):  # unfinished function
         MDHoliday = f"{eyweredEyareg[beal][1][2]} {dayOfTheHoliday}"
     return f"{findNameOfTheDayForHoliday(MDHoliday)} {MDHoliday}"
 
-
 def enter():
     try:
         global ameteMihiret
@@ -97,8 +87,7 @@ def enter():
     except:
         print("Please enter a valid Year!")
         enter()
-
-
+        
 print("Welcome!")  # Start of the code:
 print("This program let's you know major holidays and festivals in the ethiopian calendar.")
 while 1:
@@ -111,7 +100,6 @@ while 1:
     wenber = 18 if medeb == 0 else medeb-1
     abeqte = (wenber*11) % 30 if wenber*11 >= 30 else wenber*11
     metqe = 30-abeqte
-
     bealeMetqe = findBealeMetqe(metqe)
     tewsak = findTewsak(bealeMetqe)
     mebajaHamer = tewsak if tewsak == 0 or tewsak == 30 else (metqe+tewsak) % 30
