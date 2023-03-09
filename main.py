@@ -1,9 +1,7 @@
 from tabulate import tabulate
 
-
 def findNewYear(ameteTotal):
     return ameteTotal % 7
-
 
 def findBealeMetqe(metqe):
     if 30 > metqe >= 15:
@@ -13,11 +11,9 @@ def findBealeMetqe(metqe):
     else:
         return f"{months[1]} 30"
 
-
 def findTewsak(bealeMetqe):
     m, d = bealeMetqe.split()
     return eleteTwesag[findNameOfTheDay(int(d), m)]
-
 
 def findTsomeNenewe(bealeMetqe, mebajaHamer):
     m, d = bealeMetqe.split()
@@ -30,14 +26,12 @@ def findTsomeNenewe(bealeMetqe, mebajaHamer):
     elif m == "ጥቅምት":
         return f"የካቲት {mebajaHamer}"
 
-
 def findNameOfTheDay(day, month):
     a = yon[newYearDayName[findNewYear(ameteTotal)]]
     b = astifeWer[month]
     c = day
     d = (a+b+c) % 7
     return nameOfTheDay[d]
-
 
 def findTheDayOfTheHoliday(beal):
     dayOfTheHoliday = eyweredEyareg[beal][0]+mebajaHamer
@@ -50,7 +44,6 @@ def findTheDayOfTheHoliday(beal):
 
     return f"{findNameOfTheDayForHoliday(MDHoliday)} {MDHoliday}"
 
-
 def findNameOfTheDayForHoliday(monthDayString):
     month, day = monthDayString.split()
     a = yon[newYearDayName[findNewYear(ameteTotal)]]
@@ -61,21 +54,13 @@ def findNameOfTheDayForHoliday(monthDayString):
 
 
 eleteTwesag = {'እሁድ': 7, 'ሰኞ': 6, 'ማክሰኞ': 5,'ረቡዕ': 4, 'ሐሙስ': 3, 'አርብ': 2, 'ቅዳሜ': 8}
-
 ameteWengelList = {0: 'ዘመነ ዮሐንስ', 1: 'ዘመነ ማቴዎስ', 2: 'ዘመነ ማርቆስ', 3: 'ዘመነ ሉቃስ'}
-
 newYearDayName = {1: 'እሁድ', 2: 'ሰኞ', 3: 'ማክሰኞ',4: 'ረቡዕ', 5: 'ሐሙስ', 6: 'አርብ', 0: 'ቅዳሜ'}
-
 months = {1: 'መስከረም', 2: 'ጥቅምት', 3: 'ህዳር', 4: 'ታህሳስ', 5: 'ጥር', 6: 'የካቲት',7: 'መጋቢት', 8: 'ሚያዝያ', 9: 'ግንቦት', 10: 'ሰኔ', 11: 'ሀምሌ', 12: 'ነሐሴ'}
-
 yon = {'እሁድ': 5, 'ሰኞ': 6, 'ማክሰኞ': 7, 'ረቡዕ': 1, 'ሐሙስ': 2, 'አርብ': 3, 'ቅዳሜ': 4}
-
 astifeWer = {'መስከረም': 2, 'ጥቅምት': 4, 'ህዳር': 6, 'ታህሳስ': 8, 'ጥር': 10, 'የካቲት': 12,'መጋቢት': 14, 'ሚያዝያ': 16, 'ግንቦት': 18, 'ሰኔ': 20, 'ሀምሌ': 22, 'ነሐሴ': 24}
-
 nameOfTheDay = newYearDayName
-
 eyweredEyareg = {"abiyTsom": [14, ["የካቲት", "መጋቢት"], 1, 5], "debreZeyit": [11, ["የካቲት", "መጋቢት", "ሚያዝያ"], 28, 2], "hosaina": [2, ["መጋቢት", "ሚያዝያ"], 19, 23], "seqlet": [7, ["መጋቢት", "ሚያዝያ"], 24, 28], "fasika": [9, ["መጋቢት", "ሚያዝያ"], 26, 30], "erkibeKahinat": [3, ["ሚያዝያ", "ግንቦት"], 20, 24], "erget": [18, ["ግንቦት", "ሰኔ"], 5, 9], "peraclitos": [28, ["ግንቦት", "ሰኔ"], 15, 19], "tsomeHawariyat": [29, ["ግንቦት", "ሰኔ"], 16, 20], "tsomeDihinet": [1, ["ግንቦት", "ሰኔ"], 18, 22], }
-
 
 def findDebireZeyit(beal):  # unfinished function
     dayOfTheHoliday = eyweredEyareg[beal][0]+mebajaHamer
@@ -89,7 +74,6 @@ def findDebireZeyit(beal):  # unfinished function
         MDHoliday = f"{eyweredEyareg[beal][1][2]} {dayOfTheHoliday}"
     return f"{findNameOfTheDayForHoliday(MDHoliday)} {MDHoliday}"
 
-
 def enter():
     try:
         global ameteMihiret
@@ -97,7 +81,6 @@ def enter():
     except:
         print("Please enter a valid Year!")
         enter()
-
 
 print("Welcome!")  # Start of the code:
 print("This program let's you know major holidays and festivals in the ethiopian calendar.")
