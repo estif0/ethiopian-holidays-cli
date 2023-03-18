@@ -103,7 +103,7 @@ while 1:
     bealeGirizat = f"{dayName('ጥር 6')} ጥር 6"
     genbotLidata = f"{dayName('ግንቦት 1')} ግንቦት 1"
     derbreTabor = f"{dayName('ነሐሴ 13')} ነሐሴ 13"
-    TsomeLidet = f"{dayName('ህዳር 15')} ህዳር 15"
+    TsomeLidet = f"{dayName('ህዳር 16')} ህዳር 16" if ameteWengel != 'ዘመነ ዮሐንስ' else f"{dayName('ህዳር 15')} ህዳር 15"
     dayOfTimket = dayName('ጥር 11')
     TsomeGehad = f"{dayName('ጥር 10')} ጥር 10" if dayOfTimket == 'አርብ' or dayOfTimket == 'ረቡዕ' else 'የለም'
     tsomeFilseta = f"{dayName('ነሐሴ 1')} ነሐሴ 1"
