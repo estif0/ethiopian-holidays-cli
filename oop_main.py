@@ -1,15 +1,5 @@
 from tabulate import tabulate
-import argparse
-
-"""The code below uses the argparse module to make the program be executed in the terminal."""
-#
-parser = argparse.ArgumentParser(description="Print the holiday")
-parser.add_argument(
-    "year", metavar="year", type=str, help="Prints all the holidays in that year"
-)
-args = parser.parse_args()
-year = args.year
-#
+from argparse import ArgumentParser, Namespace
 
 
 class Date:
@@ -62,7 +52,7 @@ class Date:
         self.beale_simeon = f"{self.day_name('የካቲት 8')} የካቲት 8"
         self.beale_girizat = f"{self.day_name('ጥር 6')} ጥር 6"
         self.genbot_lideta = f"{self.day_name('ግንቦት 1')} ግንቦት 1"
-        self.derbre_tabor = f"{self.day_name('ነሐሴ 13')} ነሐሴ 13"
+        self.debre_tabor = f"{self.day_name('ነሐሴ 13')} ነሐሴ 13"
         self.tsome_lidet = (
             f"{self.day_name('ህዳር 16')} ህዳር 16"
             if self.amete_wengel != "ዘመነ ዮሐንስ"
@@ -126,7 +116,7 @@ class Date:
             self.tsome_hawariyat,
             self.tsome_dihinet,
             self.tsome_filseta,
-            self.derbre_tabor,
+            self.debre_tabor,
             self.tsome_filseta_mefchiya,
         ]
 
@@ -281,27 +271,159 @@ class Date:
     }
 
 
-def enter():
-    """This function checks for invalid input when users are asked to enter the year"""
-    try:
-        global year
-        year = Date(int(year))
-    except:
-        print("Please enter a valid Year!")
-        enter()
+"""The code below uses the argparse module to make the program be executed in the terminal by adding arguments to 
+perform a specific task."""
+# -------------------------------------------------------------------------------------------------
+parser = ArgumentParser(
+    description="Print the days of the holidays and fastings in a year."
+)
+parser.add_argument(
+    "yearin",
+    help="prints all the holidays in the year if no other pararmeter is called",
+    type=int,
+)
+parser.add_argument(
+    "-n", "--newyear", help="prints the day of the New Year", action="store_true"
+)
+parser.add_argument(
+    "-m", "--mesqel", help="prints the day of Mesqel", action="store_true"
+)
+parser.add_argument(
+    "-tl", "--tsomelidet", help="prints the day of Tsome Lidet", action="store_true"
+)
+parser.add_argument("-g", "--gena", help="prints the day of Gena", action="store_true")
+parser.add_argument(
+    "-tg", "--tsomegehad", help="prints the day of Tsome Gehad", action="store_true"
+)
+parser.add_argument(
+    "-t", "--timket", help="prints the day of Timket", action="store_true"
+)
+parser.add_argument(
+    "-kz",
+    "--kanazegelila",
+    help="prints the day of Kana Zegelila",
+    action="store_true",
+)
+parser.add_argument(
+    "-tn", "--tsomenenewe", help="prints the day of Tsome Nenewe", action="store_true"
+)
+parser.add_argument(
+    "-bs", "--bealesimeon", help="prints the day of Beale Simeon", action="store_true"
+)
+parser.add_argument(
+    "-ta", "--tsomeabiy", help="prints the day of Tsome Abiy", action="store_true"
+)
+parser.add_argument(
+    "-dz", "--debrezeyit", help="prints the day of Debre Zeyit", action="store_true"
+)
+parser.add_argument(
+    "-bt", "--bealetsinset", help="prints the day of Beale Tinset", action="store_true"
+)
+parser.add_argument(
+    "-ho", "--hosaina", help="prints the day of Hosaina", action="store_true"
+)
+parser.add_argument(
+    "-s", "--seqlet", help="prints the day of Seqlet", action="store_true"
+)
+parser.add_argument(
+    "-f", "--fasika", help="prints the day of Fasika", action="store_true"
+)
+parser.add_argument(
+    "-gl",
+    "--ginbotlideta",
+    help="prints the day of Ginbot Lideta",
+    action="store_true",
+)
+parser.add_argument(
+    "-ek",
+    "--erkibekahinat",
+    help="prints the day of Erkibe Kahinat",
+    action="store_true",
+)
+parser.add_argument(
+    "-e", "--erget", help="prints the day of Erget", action="store_true"
+)
+parser.add_argument(
+    "-p", "--peraclitos", help="prints the day of Peraclitos", action="store_true"
+)
+parser.add_argument(
+    "-th",
+    "--tsomehawariyat",
+    help="prints the day of Tsome Hawariyat",
+    action="store_true",
+)
+parser.add_argument(
+    "-td", "--tsomedihnet", help="prints the day of Tsome Dihnet", action="store_true"
+)
+parser.add_argument(
+    "-tf",
+    "--tsomefilseta",
+    help="prints the day of Tsome Filseta",
+    action="store_true",
+)
+parser.add_argument(
+    "-db", "--debretabor", help="prints the day of Debre Tabor", action="store_true"
+)
+parser.add_argument(
+    "-etf",
+    "--endoftsomefilseta",
+    help="prints the day of end of Tsome",
+    action="store_true",
+)
 
+args: Namespace = parser.parse_args()
+
+# -------------------------------------------------------------------------------------------------
 
 # Start of code
-print(
-    "Welcome!\nThis program let's you know major holidays and festivals in the ethiopian calendar."
-)
-while 1:
-    enter()
+year = Date(args.yearin)
+if args.newyear:
+    print(year.new_year_day)
+elif args.mesqel:
+    print(year.mesqel)
+elif args.tsomelidet:
+    print(year.tsome_lidet)
+elif args.gena:
+    print(year.gena)
+elif args.tsomegehad:
+    print(year.tsome_gehad)
+elif args.timket:
+    print(year.timket)
+elif args.kanazegelila:
+    print(year.kana_zegelila)
+elif args.tsomenenewe:
+    print(year.tsome_nenewe)
+elif args.bealesimeon:
+    print(year.beale_simeon)
+elif args.tsomeabiy:
+    print(year.abiy_tsom)
+elif args.debrezeyit:
+    print(year.debre_zeyit)
+elif args.bealetsinset:
+    print(year.beale_tsinset)
+elif args.hosaina:
+    print(year.hosaina)
+elif args.seqlet:
+    print(year.seqlet)
+elif args.fasika:
+    print(year.fasika)
+elif args.ginbotlideta:
+    print(year.genbot_lideta)
+elif args.erkibekahinat:
+    print(year.erkibe_kahinat)
+elif args.erget:
+    print(year.erget)
+elif args.peraclitos:
+    print(year.peraclitos)
+elif args.tsomehawariyat:
+    print(year.tsome_hawariyat)
+elif args.tsomedihnet:
+    print(year.tsome_dihinet)
+elif args.tsomefilseta:
+    print(year.tsome_filseta)
+elif args.debretabor:
+    print(year.debre_tabor)
+elif args.endoftsomefilseta:
+    print(year.tsome_filseta_mefchiya)
+else:
     year.print()
-    option = input(
-        "Do you want to continue? Press (N) to exit or press any key to continue: "
-    )
-    if option.upper() == "N":
-        break
-    else:
-        continue
