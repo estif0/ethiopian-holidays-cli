@@ -40,7 +40,7 @@ python3 oop_main.py 2015 --fasika
 
 - The command will return:
 
-  ![Fakia Date][/img/img2.png]
+  ![Fakia Date](/img/IMG2.PNG)
 
 - Since there are multiple parameters for the holidays, you can run the following command for help
 
