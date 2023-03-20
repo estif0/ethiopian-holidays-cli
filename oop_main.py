@@ -1,4 +1,15 @@
 from tabulate import tabulate
+import argparse
+
+"""The code below uses the argparse module to make the program be executed in the terminal."""
+#
+parser = argparse.ArgumentParser(description="Print the holiday")
+parser.add_argument(
+    "year", metavar="year", type=str, help="Prints all the holidays in that year"
+)
+args = parser.parse_args()
+year = args.year
+#
 
 
 class Date:
@@ -274,7 +285,7 @@ def enter():
     """This function checks for invalid input when users are asked to enter the year"""
     try:
         global year
-        year = Date(int(input("Enter the year: ")))
+        year = Date(int(year))
     except:
         print("Please enter a valid Year!")
         enter()
