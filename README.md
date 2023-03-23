@@ -8,16 +8,28 @@
 
 ### 1. Prints a table of the holidays
 
-- Assuming you are in the directory of the file `oop_main.py`, you can enter the following command:
+- Assuming you are in the directory of the file `main.py`, you can enter the following command:
 
+```sh
+python3 main.py [year] -a
 ```
-python3 oop_main.py [year]
+
+> or
+
+```sh
+python3 main.py -a
 ```
 
 Example:
 
+```sh
+python3 main.py 2015 -a
 ```
-python3 oop_main.py 2015
+
+> or you can just use the -a argument
+
+```sh
+python3 main.py -a
 ```
 
 - The command will return a table like:
@@ -26,16 +38,28 @@ python3 oop_main.py 2015
 
 ### 2. Prints a date for a specific holiday
 
-- Again, assuming you are in the directory of the file `oop_main.py`, you can enter the following command:
+- Again, assuming you are in the directory of the file `main.py`, you can enter the following command:
 
+```sh
+python3 main.py [year] [Holiday argument]
 ```
-python3 oop_main.py [year] [Holiday argument]
+
+> or
+
+```sh
+python3 main.py [Holiday argument]
 ```
 
 Example:
 
+```sh
+python3 main.py 2015 --fasika
 ```
-python3 oop_main.py 2015 --fasika
+
+> or
+
+```sh
+python3 main.py --fasika
 ```
 
 - The command will return:
@@ -44,8 +68,8 @@ python3 oop_main.py 2015 --fasika
 
 - Since there are multiple parameters for the holidays, you can run the following command for help
 
-```
-python3 oop_main.py -h
+```sh
+python3 main.py -h
 ```
 
 ### If you want to know how all the calculations were made:

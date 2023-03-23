@@ -445,7 +445,7 @@ if __name__ == "__main__":
     # -------------------------------------------------------------------------------------------------
 
     if parser.parse_args().Year is None:
-        year = Date(datetime.now().year)
+        year = Date(datetime.now().year - 8)
     else:
         year = Date(args.Year)
     parameters = [
