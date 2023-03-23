@@ -48,6 +48,10 @@ python3 oop_main.py 2015 --fasika
 python3 oop_main.py -h
 ```
 
+### If you want to know how all the calculations were made:
+
+(Click Here!)[https://drive.google.com/file/d/1e7AukagokWlEiuz_0YtZ8Oz3RcUoQaLC/view?usp=sharing]
+
 ---
 
 License: The repository is licensed under the MIT License.
