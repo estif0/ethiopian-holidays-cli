@@ -1,6 +1,7 @@
-from datetime import datetime
-from tabulate import tabulate
 from argparse import ArgumentParser, Namespace
+from datetime import datetime
+
+from tabulate import tabulate
 
 
 class Date:
@@ -274,174 +275,200 @@ class Date:
     }
 
 
-"""The code below uses the argparse module to make the program be executed in the terminal by adding arguments to 
-perform a specific task."""
-# -------------------------------------------------------------------------------------------------
-parser = ArgumentParser(
-    description="Print the days of the holidays and fastings in a year."
-)
-parser.add_argument(
-    "-a", "--all", help="prints all the days of the Holidays", action="store_true"
-)
-parser.add_argument(
-    "Year",
-    help="Assigns current  year when no argument is given",
-    type=int,
-    default=None,
-    nargs="?",
-)
-parser.add_argument(
-    "-n", "--new_year", help="prints the day of the New Year", action="store_true"
-)
-parser.add_argument(
-    "-m", "--mesqel", help="prints the day of Mesqel", action="store_true"
-)
-parser.add_argument(
-    "-tl", "--tsome_lidet", help="prints the day of Tsome Lidet", action="store_true"
-)
-parser.add_argument("-g", "--gena", help="prints the day of Gena", action="store_true")
-parser.add_argument(
-    "-tg", "--tsome_gehad", help="prints the day of Tsome Gehad", action="store_true"
-)
-parser.add_argument(
-    "-t", "--timket", help="prints the day of Timket", action="store_true"
-)
-parser.add_argument(
-    "-kz",
-    "--kana_zegelila",
-    help="prints the day of Kana Zegelila",
-    action="store_true",
-)
-parser.add_argument(
-    "-tn", "--tsome_nenewe", help="prints the day of Tsome Nenewe", action="store_true"
-)
-parser.add_argument(
-    "-bs", "--beale_simeon", help="prints the day of Beale Simeon", action="store_true"
-)
-parser.add_argument(
-    "-ta", "--tsome_abiy", help="prints the day of Tsome Abiy", action="store_true"
-)
-parser.add_argument(
-    "-dz", "--debre_zeyit", help="prints the day of Debre Zeyit", action="store_true"
-)
-parser.add_argument(
-    "-bt", "--beale_tsinset", help="prints the day of Beale Tinset", action="store_true"
-)
-parser.add_argument(
-    "-ho", "--hosaina", help="prints the day of Hosaina", action="store_true"
-)
-parser.add_argument(
-    "-s", "--seqlet", help="prints the day of Seqlet", action="store_true"
-)
-parser.add_argument(
-    "-f", "--fasika", help="prints the day of Fasika", action="store_true"
-)
-parser.add_argument(
-    "-gl",
-    "--ginbot_lideta",
-    help="prints the day of Ginbot Lideta",
-    action="store_true",
-)
-parser.add_argument(
-    "-ek",
-    "--erkibe_kahinat",
-    help="prints the day of Erkibe Kahinat",
-    action="store_true",
-)
-parser.add_argument(
-    "-e", "--erget", help="prints the day of Erget", action="store_true"
-)
-parser.add_argument(
-    "-p", "--peraclitos", help="prints the day of Peraclitos", action="store_true"
-)
-parser.add_argument(
-    "-th",
-    "--tsome_hawariyat",
-    help="prints the day of Tsome Hawariyat",
-    action="store_true",
-)
-parser.add_argument(
-    "-td", "--tsome_dihnet", help="prints the day of Tsome Dihnet", action="store_true"
-)
-parser.add_argument(
-    "-tf",
-    "--tsome_filseta",
-    help="prints the day of Tsome Filseta",
-    action="store_true",
-)
-parser.add_argument(
-    "-db", "--debre_tabor", help="prints the day of Debre Tabor", action="store_true"
-)
-parser.add_argument(
-    "-etf",
-    "--end_of_tsome_filseta",
-    help="prints the day of end of Tsome",
-    action="store_true",
-)
+if __name__ == "__main__":
+    """The code below uses the argparse module to make the program be executed in the terminal by adding arguments to
+    perform a specific task."""
+    # -------------------------------------------------------------------------------------------------
+    parser = ArgumentParser(
+        description="Print the days of the holidays and fastings in a year."
+    )
+    parser.add_argument(
+        "-a", "--all", help="prints all the days of the Holidays", action="store_true"
+    )
+    parser.add_argument(
+        "Year",
+        help="Assigns current  year when no argument is given",
+        type=int,
+        default=None,
+        nargs="?",
+    )
+    parser.add_argument(
+        "-n", "--new_year", help="prints the day of the New Year", action="store_true"
+    )
+    parser.add_argument(
+        "-m", "--mesqel", help="prints the day of Mesqel", action="store_true"
+    )
+    parser.add_argument(
+        "-tl",
+        "--tsome_lidet",
+        help="prints the day of Tsome Lidet",
+        action="store_true",
+    )
+    parser.add_argument(
+        "-g", "--gena", help="prints the day of Gena", action="store_true"
+    )
+    parser.add_argument(
+        "-tg",
+        "--tsome_gehad",
+        help="prints the day of Tsome Gehad",
+        action="store_true",
+    )
+    parser.add_argument(
+        "-t", "--timket", help="prints the day of Timket", action="store_true"
+    )
+    parser.add_argument(
+        "-kz",
+        "--kana_zegelila",
+        help="prints the day of Kana Zegelila",
+        action="store_true",
+    )
+    parser.add_argument(
+        "-tn",
+        "--tsome_nenewe",
+        help="prints the day of Tsome Nenewe",
+        action="store_true",
+    )
+    parser.add_argument(
+        "-bs",
+        "--beale_simeon",
+        help="prints the day of Beale Simeon",
+        action="store_true",
+    )
+    parser.add_argument(
+        "-ta", "--tsome_abiy", help="prints the day of Tsome Abiy", action="store_true"
+    )
+    parser.add_argument(
+        "-dz",
+        "--debre_zeyit",
+        help="prints the day of Debre Zeyit",
+        action="store_true",
+    )
+    parser.add_argument(
+        "-bt",
+        "--beale_tsinset",
+        help="prints the day of Beale Tinset",
+        action="store_true",
+    )
+    parser.add_argument(
+        "-ho", "--hosaina", help="prints the day of Hosaina", action="store_true"
+    )
+    parser.add_argument(
+        "-s", "--seqlet", help="prints the day of Seqlet", action="store_true"
+    )
+    parser.add_argument(
+        "-f", "--fasika", help="prints the day of Fasika", action="store_true"
+    )
+    parser.add_argument(
+        "-gl",
+        "--ginbot_lideta",
+        help="prints the day of Ginbot Lideta",
+        action="store_true",
+    )
+    parser.add_argument(
+        "-ek",
+        "--erkibe_kahinat",
+        help="prints the day of Erkibe Kahinat",
+        action="store_true",
+    )
+    parser.add_argument(
+        "-e", "--erget", help="prints the day of Erget", action="store_true"
+    )
+    parser.add_argument(
+        "-p", "--peraclitos", help="prints the day of Peraclitos", action="store_true"
+    )
+    parser.add_argument(
+        "-th",
+        "--tsome_hawariyat",
+        help="prints the day of Tsome Hawariyat",
+        action="store_true",
+    )
+    parser.add_argument(
+        "-td",
+        "--tsome_dihnet",
+        help="prints the day of Tsome Dihnet",
+        action="store_true",
+    )
+    parser.add_argument(
+        "-tf",
+        "--tsome_filseta",
+        help="prints the day of Tsome Filseta",
+        action="store_true",
+    )
+    parser.add_argument(
+        "-db",
+        "--debre_tabor",
+        help="prints the day of Debre Tabor",
+        action="store_true",
+    )
+    parser.add_argument(
+        "-etf",
+        "--end_of_tsome_filseta",
+        help="prints the day of end of Tsome",
+        action="store_true",
+    )
 
-args: Namespace = parser.parse_args()
+    args: Namespace = parser.parse_args()
 
-# -------------------------------------------------------------------------------------------------
+    # -------------------------------------------------------------------------------------------------
 
-# Start of code
-if parser.parse_args().Year is None:
-    year = Date(datetime.now().year)
-else:
-    year = Date(args.Year)
-parameters = [
-    "new_year",
-    "mesqel",
-    "tsome_lidet",
-    "gena",
-    "tsome_gehad",
-    "timket",
-    "kana_zegelila",
-    "tsome_nenewe",
-    "beale_simeon",
-    "tsome_abiy",
-    "debre_zeyit",
-    "beale_tsinset",
-    "hosaina",
-    "seqlet",
-    "fasika",
-    "ginbot_lideta",
-    "erkibe_kahinat",
-    "erget",
-    "peraclitos",
-    "tsome_hawariyat",
-    "tsome_dihnet",
-    "tsome_filseta",
-    "debre_tabor",
-    "end_of_tsome_filseta",
-]
-methods = [
-    "new_year_day",
-    "mesqel",
-    "tsome_lidet",
-    "gena",
-    "tsome_gehad",
-    "timket",
-    "kana_zegelila",
-    "tsome_nenewe",
-    "beale_simeon",
-    "abiy_tsom",
-    "debre_zeyit",
-    "beale_tsinset",
-    "hosaina",
-    "seqlet",
-    "fasika",
-    "genbot_lideta",
-    "erkibe_kahinat",
-    "erget",
-    "peraclitos",
-    "tsome_hawariyat",
-    "tsome_dihinet",
-    "tsome_filseta",
-    "debre_tabor",
-    "tsome_filseta_mefchiya",
-]
-if args.all:
-    year.print()
-for p, m in zip(parameters, methods):
-    if getattr(args, p):
-        print(getattr(year, m))
+    if parser.parse_args().Year is None:
+        year = Date(datetime.now().year)
+    else:
+        year = Date(args.Year)
+    parameters = [
+        "new_year",
+        "mesqel",
+        "tsome_lidet",
+        "gena",
+        "tsome_gehad",
+        "timket",
+        "kana_zegelila",
+        "tsome_nenewe",
+        "beale_simeon",
+        "tsome_abiy",
+        "debre_zeyit",
+        "beale_tsinset",
+        "hosaina",
+        "seqlet",
+        "fasika",
+        "ginbot_lideta",
+        "erkibe_kahinat",
+        "erget",
+        "peraclitos",
+        "tsome_hawariyat",
+        "tsome_dihnet",
+        "tsome_filseta",
+        "debre_tabor",
+        "end_of_tsome_filseta",
+    ]
+    methods = [
+        "new_year_day",
+        "mesqel",
+        "tsome_lidet",
+        "gena",
+        "tsome_gehad",
+        "timket",
+        "kana_zegelila",
+        "tsome_nenewe",
+        "beale_simeon",
+        "abiy_tsom",
+        "debre_zeyit",
+        "beale_tsinset",
+        "hosaina",
+        "seqlet",
+        "fasika",
+        "genbot_lideta",
+        "erkibe_kahinat",
+        "erget",
+        "peraclitos",
+        "tsome_hawariyat",
+        "tsome_dihinet",
+        "tsome_filseta",
+        "debre_tabor",
+        "tsome_filseta_mefchiya",
+    ]
+    if args.all:
+        year.print()
+    for p, m in zip(parameters, methods):
+        if getattr(args, p):
+            print(getattr(year, m))
