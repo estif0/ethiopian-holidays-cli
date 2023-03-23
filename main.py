@@ -1,3 +1,4 @@
+from datetime import datetime
 from tabulate import tabulate
 from argparse import ArgumentParser, Namespace
 
@@ -30,7 +31,9 @@ class Date:
             if self.tewsak == 0 or self.tewsak == 30
             else (self.metqe + self.tewsak) % 30
         )
-        self.tsome_nenewe = f"{self.day_name(self.find_tsome_nenewe(self.beale_metqe, self.mebaja_hamer))} {self.find_tsome_nenewe(self.beale_metqe, self.mebaja_hamer)}"
+        self.tsome_nenewe = (
+            f"{self.day_name(self.find_tsome_nenewe())} {self.find_tsome_nenewe()}"
+        )
         self.abiy_tsom = self.day_of_the_holiday("abiy_tsom")
         self.hosaina = self.day_of_the_holiday("hosaina")
         self.seqlet = self.day_of_the_holiday("seqlet")
@@ -132,17 +135,17 @@ class Date:
             % 7
         ]
 
-    def find_tsome_nenewe(self, beale_metqe, mebaja_hamer):
+    def find_tsome_nenewe(self):
         """The function finds the day of nenewe fasting starts"""
-        m, d = beale_metqe.split()
+        m, d = self.beale_metqe.split()
         if int(d) == 0 or int(d) == 30:
-            return f"የካቲት {mebaja_hamer}"
-        elif mebaja_hamer > 30:
-            return f"የካቲት {mebaja_hamer%30}"
+            return f"የካቲት {self.mebaja_hamer}"
+        elif self.mebaja_hamer > 30:
+            return f"የካቲት {self.mebaja_hamer%30}"
         elif m == "መስከረም":
-            return f"ጥር {mebaja_hamer}"
+            return f"ጥር {self.mebaja_hamer}"
         elif m == "ጥቅምት":
-            return f"የካቲት {mebaja_hamer}"
+            return f"የካቲት {self.mebaja_hamer}"
 
     def find_name_of_the_day(self, day, month):
         """Finds the name of the day like the first function but the parameter is a separated day and month variable"""
@@ -184,7 +187,7 @@ class Date:
 
     def findDebireZeyit(self):
         """finds when the day when debre_zeyit Holiday occurs"""
-        month, day = self.find_tsome_nenewe(self.beale_metqe, self.mebaja_hamer).split()
+        month, day = self.find_tsome_nenewe().split()
         nenewe = int(day) + 41
         increment = 0
         while nenewe > 30:
@@ -278,9 +281,14 @@ parser = ArgumentParser(
     description="Print the days of the holidays and fastings in a year."
 )
 parser.add_argument(
+    "-a", "--all", help="prints all the days of the Holidays", action="store_true"
+)
+parser.add_argument(
     "Year",
-    help="prints all the holidays in the year if no other pararmeter is called",
+    help="Assigns current  year when no argument is given",
     type=int,
+    default=None,
+    nargs="?",
 )
 parser.add_argument(
     "-n", "--new_year", help="prints the day of the New Year", action="store_true"
@@ -376,7 +384,10 @@ args: Namespace = parser.parse_args()
 # -------------------------------------------------------------------------------------------------
 
 # Start of code
-year = Date(args.Year)
+if parser.parse_args().Year is None:
+    year = Date(datetime.now().year)
+else:
+    year = Date(args.Year)
 parameters = [
     "new_year",
     "mesqel",
@@ -429,7 +440,7 @@ methods = [
     "debre_tabor",
     "tsome_filseta_mefchiya",
 ]
-if args.Year:
+if args.all:
     year.print()
 for p, m in zip(parameters, methods):
     if getattr(args, p):
