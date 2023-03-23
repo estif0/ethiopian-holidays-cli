@@ -22,7 +22,9 @@ class Date:
         self.medeb = self.amete_alem % 19
         self.wenber = 18 if self.medeb == 0 else self.medeb - 1
         self.abeqte = (
-            (self.wenber * 11) % 30 if self.wenber * 11 >= 30 else self.wenber * 11
+            (self.wenber * 11) % 30
+            if self.wenber * 11 >= 30
+            else self.wenber * 11
         )
         self.metqe = 30 - self.abeqte
         self.beale_metqe = self.find_beale_metqe()
@@ -32,9 +34,7 @@ class Date:
             if self.tewsak == 0 or self.tewsak == 30
             else (self.metqe + self.tewsak) % 30
         )
-        self.tsome_nenewe = (
-            f"{self.day_name(self.find_tsome_nenewe())} {self.find_tsome_nenewe()}"
-        )
+        self.tsome_nenewe = f"{self.day_name(self.find_tsome_nenewe())} {self.find_tsome_nenewe()}"
         self.abiy_tsom = self.day_of_the_holiday("abiy_tsom")
         self.hosaina = self.day_of_the_holiday("hosaina")
         self.seqlet = self.day_of_the_holiday("seqlet")
@@ -181,9 +181,13 @@ class Date:
         if day_of_the_holiday > 30:
             day_of_the_holiday = day_of_the_holiday % 30
         if self.eywered_eyareg[beal][2] <= day_of_the_holiday <= 30:
-            MDHoliday = f"{self.eywered_eyareg[beal][1][0]} {day_of_the_holiday}"
+            MDHoliday = (
+                f"{self.eywered_eyareg[beal][1][0]} {day_of_the_holiday}"
+            )
         elif 1 <= day_of_the_holiday <= self.eywered_eyareg[beal][3]:
-            MDHoliday = f"{self.eywered_eyareg[beal][1][1]} {day_of_the_holiday}"
+            MDHoliday = (
+                f"{self.eywered_eyareg[beal][1][1]} {day_of_the_holiday}"
+            )
         return f"{self.day_name(MDHoliday)} {MDHoliday}"
 
     def findDebireZeyit(self):
@@ -221,7 +225,12 @@ class Date:
         "አርብ": 2,
         "ቅዳሜ": 8,
     }
-    amete_wengel_list = {0: "ዘመነ ዮሐንስ", 1: "ዘመነ ማቴዎስ", 2: "ዘመነ ማርቆስ", 3: "ዘመነ ሉቃስ"}
+    amete_wengel_list = {
+        0: "ዘመነ ዮሐንስ",
+        1: "ዘመነ ማቴዎስ",
+        2: "ዘመነ ማርቆስ",
+        3: "ዘመነ ሉቃስ",
+    }
     new_year_day_name = {
         1: "እሁድ",
         2: "ሰኞ",
@@ -245,7 +254,15 @@ class Date:
         11: "ሀምሌ",
         12: "ነሐሴ",
     }
-    yon = {"እሁድ": 5, "ሰኞ": 6, "ማክሰኞ": 7, "ረቡዕ": 1, "ሐሙስ": 2, "አርብ": 3, "ቅዳሜ": 4}
+    yon = {
+        "እሁድ": 5,
+        "ሰኞ": 6,
+        "ማክሰኞ": 7,
+        "ረቡዕ": 1,
+        "ሐሙስ": 2,
+        "አርብ": 3,
+        "ቅዳሜ": 4,
+    }
     astifeWer = {
         "መስከረም": 2,
         "ጥቅምት": 4,
@@ -278,12 +295,16 @@ class Date:
 if __name__ == "__main__":
     """The code below uses the argparse module to make the program be executed in the terminal by adding arguments to
     perform a specific task."""
+
     # -------------------------------------------------------------------------------------------------
     parser = ArgumentParser(
         description="Print the days of the holidays and fastings in a year."
     )
     parser.add_argument(
-        "-a", "--all", help="prints all the days of the Holidays", action="store_true"
+        "-a",
+        "--all",
+        help="prints all the days of the Holidays",
+        action="store_true",
     )
     parser.add_argument(
         "Year",
@@ -293,7 +314,10 @@ if __name__ == "__main__":
         nargs="?",
     )
     parser.add_argument(
-        "-n", "--new_year", help="prints the day of the New Year", action="store_true"
+        "-n",
+        "--new_year",
+        help="prints the day of the New Year",
+        action="store_true",
     )
     parser.add_argument(
         "-m", "--mesqel", help="prints the day of Mesqel", action="store_true"
@@ -335,7 +359,10 @@ if __name__ == "__main__":
         action="store_true",
     )
     parser.add_argument(
-        "-ta", "--tsome_abiy", help="prints the day of Tsome Abiy", action="store_true"
+        "-ta",
+        "--tsome_abiy",
+        help="prints the day of Tsome Abiy",
+        action="store_true",
     )
     parser.add_argument(
         "-dz",
@@ -350,7 +377,10 @@ if __name__ == "__main__":
         action="store_true",
     )
     parser.add_argument(
-        "-ho", "--hosaina", help="prints the day of Hosaina", action="store_true"
+        "-ho",
+        "--hosaina",
+        help="prints the day of Hosaina",
+        action="store_true",
     )
     parser.add_argument(
         "-s", "--seqlet", help="prints the day of Seqlet", action="store_true"
@@ -374,7 +404,10 @@ if __name__ == "__main__":
         "-e", "--erget", help="prints the day of Erget", action="store_true"
     )
     parser.add_argument(
-        "-p", "--peraclitos", help="prints the day of Peraclitos", action="store_true"
+        "-p",
+        "--peraclitos",
+        help="prints the day of Peraclitos",
+        action="store_true",
     )
     parser.add_argument(
         "-th",
