@@ -30,7 +30,8 @@ class Date:
             if self.tewsak == 0 or self.tewsak == 30
             else (self.metqe + self.tewsak) % 30
         )
-        self.tsome_nenewe = f"{self.day_name(self.find_tsome_nenewe(self.beale_metqe, self.mebaja_hamer))} {self.find_tsome_nenewe(self.beale_metqe, self.mebaja_hamer)}"
+        self.tsome_nenewe = (
+            f"{self.day_name(self.find_tsome_nenewe(self.beale_metqe, self.mebaja_hamer))} {self.find_tsome_nenewe(self.beale_metqe, self.mebaja_hamer)}")
         self.abiy_tsom = self.day_of_the_holiday("abiy_tsom")
         self.hosaina = self.day_of_the_holiday("hosaina")
         self.seqlet = self.day_of_the_holiday("seqlet")
@@ -278,46 +279,46 @@ parser = ArgumentParser(
     description="Print the days of the holidays and fastings in a year."
 )
 parser.add_argument(
-    "yearin",
+    "Year",
     help="prints all the holidays in the year if no other pararmeter is called",
     type=int,
 )
 parser.add_argument(
-    "-n", "--newyear", help="prints the day of the New Year", action="store_true"
+    "-n", "--new_year", help="prints the day of the New Year", action="store_true"
 )
 parser.add_argument(
     "-m", "--mesqel", help="prints the day of Mesqel", action="store_true"
 )
 parser.add_argument(
-    "-tl", "--tsomelidet", help="prints the day of Tsome Lidet", action="store_true"
+    "-tl", "--tsome_lidet", help="prints the day of Tsome Lidet", action="store_true"
 )
 parser.add_argument("-g", "--gena", help="prints the day of Gena", action="store_true")
 parser.add_argument(
-    "-tg", "--tsomegehad", help="prints the day of Tsome Gehad", action="store_true"
+    "-tg", "--tsome_gehad", help="prints the day of Tsome Gehad", action="store_true"
 )
 parser.add_argument(
     "-t", "--timket", help="prints the day of Timket", action="store_true"
 )
 parser.add_argument(
     "-kz",
-    "--kanazegelila",
+    "--kana_zegelila",
     help="prints the day of Kana Zegelila",
     action="store_true",
 )
 parser.add_argument(
-    "-tn", "--tsomenenewe", help="prints the day of Tsome Nenewe", action="store_true"
+    "-tn", "--tsome_nenewe", help="prints the day of Tsome Nenewe", action="store_true"
 )
 parser.add_argument(
-    "-bs", "--bealesimeon", help="prints the day of Beale Simeon", action="store_true"
+    "-bs", "--beale_simeon", help="prints the day of Beale Simeon", action="store_true"
 )
 parser.add_argument(
-    "-ta", "--tsomeabiy", help="prints the day of Tsome Abiy", action="store_true"
+    "-ta", "--tsome_abiy", help="prints the day of Tsome Abiy", action="store_true"
 )
 parser.add_argument(
-    "-dz", "--debrezeyit", help="prints the day of Debre Zeyit", action="store_true"
+    "-dz", "--debre_zeyit", help="prints the day of Debre Zeyit", action="store_true"
 )
 parser.add_argument(
-    "-bt", "--bealetsinset", help="prints the day of Beale Tinset", action="store_true"
+    "-bt", "--beale_tsinset", help="prints the day of Beale Tinset", action="store_true"
 )
 parser.add_argument(
     "-ho", "--hosaina", help="prints the day of Hosaina", action="store_true"
@@ -330,13 +331,13 @@ parser.add_argument(
 )
 parser.add_argument(
     "-gl",
-    "--ginbotlideta",
+    "--ginbot_lideta",
     help="prints the day of Ginbot Lideta",
     action="store_true",
 )
 parser.add_argument(
     "-ek",
-    "--erkibekahinat",
+    "--erkibe_kahinat",
     help="prints the day of Erkibe Kahinat",
     action="store_true",
 )
@@ -348,25 +349,25 @@ parser.add_argument(
 )
 parser.add_argument(
     "-th",
-    "--tsomehawariyat",
+    "--tsome_hawariyat",
     help="prints the day of Tsome Hawariyat",
     action="store_true",
 )
 parser.add_argument(
-    "-td", "--tsomedihnet", help="prints the day of Tsome Dihnet", action="store_true"
+    "-td", "--tsome_dihnet", help="prints the day of Tsome Dihnet", action="store_true"
 )
 parser.add_argument(
     "-tf",
-    "--tsomefilseta",
+    "--tsome_filseta",
     help="prints the day of Tsome Filseta",
     action="store_true",
 )
 parser.add_argument(
-    "-db", "--debretabor", help="prints the day of Debre Tabor", action="store_true"
+    "-db", "--debre_tabor", help="prints the day of Debre Tabor", action="store_true"
 )
 parser.add_argument(
     "-etf",
-    "--endoftsomefilseta",
+    "--end_of_tsome_filseta",
     help="prints the day of end of Tsome",
     action="store_true",
 )
@@ -376,7 +377,7 @@ args: Namespace = parser.parse_args()
 # -------------------------------------------------------------------------------------------------
 
 # Start of code
-year = Date(args.yearin)
+year = Date(args.Year)
 if args.newyear:
     print(year.new_year_day)
 elif args.mesqel:
