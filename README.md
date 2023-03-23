@@ -1,4 +1,4 @@
-# Ethiopian Festivals And Holidays Generator
+# 𝕰𝖙𝖍𝖎𝖔𝖕𝖎𝖆𝖓 𝕱𝖊𝖘𝖙𝖎𝖛𝖆𝖑𝖘 𝕬𝖓𝖉 𝕳𝖔𝖑𝖎𝖉𝖆𝖞𝖘 𝕲𝖊𝖓𝖊𝖗𝖆𝖙𝖔𝖗
 
 - This is a python CLI program that generates the dates of main holidays of each year in ethiopian calendar.
 
@@ -34,7 +34,9 @@ python3 main.py -a
 
 - The command will return a table like:
 
-  ![Sample Table](/img/IMG1.PNG)
+<p align="center">
+  <img src="./img/IMG1.PNG" alt="Table display">
+</p>
 
 ### 2. Prints a date for a specific holiday
 
@@ -63,8 +65,9 @@ python3 main.py --fasika
 ```
 
 - The command will return:
-
-  ![Fakia Date](/img/IMG2.PNG)
+<p align="center">
+  <img src="./img/IMG2.PNG" alt="Date display">
+</p>
 
 - Since there are multiple parameters for the holidays, you can run the following command for help
 
