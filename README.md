@@ -77,7 +77,7 @@ python3 main.py -h
 
 ### If you want to know how all the calculations were made:
 
-[Click Here!](https://drive.google.com/file/d/1e7AukagokWlEiuz_0YtZ8Oz3RcUoQaLC/view?usp=sharing)
+<a href="https://drive.google.com/file/d/1e7AukagokWlEiuz_0YtZ8Oz3RcUoQaLC/view?usp=sharing" target="_blank">Click Here!</a>
 
 ---
 
