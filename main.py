@@ -5,21 +5,19 @@ from tabulate import tabulate
 
 
 class Date:
-    def __init__(self, amete_mihiret):
+    def __init__(self, am):
         """This function intializes and computes all the neccessary calculations and variables to find the holidays.
         If you want to find out more on how these calculations were made, read the file in the documentation
         """
-        self.amete_mihiret = amete_mihiret
-        self.amete_alem = self.amete_mihiret + 5500
-        self.amete_wengel, self.metene_rabit = [
-            self.amete_wengel_list[self.amete_alem % 4],
-            self.amete_alem // 4,
+        self.am = am
+        self.aa = self.am + 5500
+        self.aw, self.mr = [
+            self.aw_list[self.aa % 4],
+            self.aa // 4,
         ]
-        self.amete_total = self.amete_alem + self.metene_rabit + 2
-        self.new_year_day = (
-            f"{self.new_year_day_name[self.amete_total%7]} {self.months[1]} 1"
-        )
-        self.medeb = self.amete_alem % 19
+        self.at = self.aa + self.mr + 2
+        self.new_year_day = f"{self.NYDayName[self.at%7]}, {self.months[1]} 1"
+        self.medeb = self.aa % 19
         self.wenber = 18 if self.medeb == 0 else self.medeb - 1
         self.abeqte = (
             (self.wenber * 11) % 30
@@ -34,49 +32,44 @@ class Date:
             if self.tewsak == 0 or self.tewsak == 30
             else (self.metqe + self.tewsak) % 30
         )
-        self.tsome_nenewe = f"{self.day_name(self.find_tsome_nenewe())} {self.find_tsome_nenewe()}"
-        self.abiy_tsom = self.day_of_the_holiday("abiy_tsom")
-        self.hosaina = self.day_of_the_holiday("hosaina")
-        self.seqlet = self.day_of_the_holiday("seqlet")
-        self.fasika = self.day_of_the_holiday("fasika")
-        self.erkibe_kahinat = self.day_of_the_holiday("erkibe_kahinat")
-        self.erget = self.day_of_the_holiday("erget")
-        self.peraclitos = self.day_of_the_holiday("peraclitos")
-        self.tsome_hawariyat = self.day_of_the_holiday("tsome_hawariyat")
-        self.tsome_dihinet = self.day_of_the_holiday("tsome_dihinet")
+        self.tsome_nenewe_ = self.find_tsome_nenewe()
+        self.tsome_nenewe = f"{self.day_name(self.find_tsome_nenewe())}, {self.find_tsome_nenewe()}"
+        self.abiy_tsom = self.day_of_the_holiday(14)
+        self.debre_zeyit = self.day_of_the_holiday(41)
+        self.hosaina = self.day_of_the_holiday(62)
+        self.seqlet = self.day_of_the_holiday(67)
+        self.fasika = self.day_of_the_holiday(69)
+        self.erkibe_kahinat = self.day_of_the_holiday(93)
+        self.erget = self.day_of_the_holiday(108)
+        self.peraclitos = self.day_of_the_holiday(118)
+        self.tsome_hawariyat = self.day_of_the_holiday(119)
+        self.tsome_dihinet = self.day_of_the_holiday(121)
         self.gena = (
-            f"{self.day_name('ታህሳስ 29')} ታህሳስ 29"
-            if self.amete_wengel != "ዘመነ ዮሐንስ"
-            else f"{self.day_name('ታህሳስ 28')} ታህሳስ 28"
+            f"{self.day_name('ታህሳስ 29')}, ታህሳስ 29"
+            if self.aw != "ዘመነ ዮሐንስ"
+            else f"{self.day_name('ታህሳስ 28')}, ታህሳስ 28"
         )
-        self.timket = f"{self.day_name('ጥር 11')} ጥር 11"
-        self.kana_zegelila = f"{self.day_name('ጥር 12')} ጥር 12"
-        self.mesqel = f"{self.day_name('መስከረም 17')} መስከረም 17"
-        self.beale_tsinset = f"{self.day_name('መጋቢት 29')} መጋቢት 29"
-        self.beale_simeon = f"{self.day_name('የካቲት 8')} የካቲት 8"
-        self.beale_girizat = f"{self.day_name('ጥር 6')} ጥር 6"
-        self.genbot_lideta = f"{self.day_name('ግንቦት 1')} ግንቦት 1"
-        self.debre_tabor = f"{self.day_name('ነሐሴ 13')} ነሐሴ 13"
+        self.timket = f"{self.day_name('ጥር 11')}, ጥር 11"
+        self.kana_zegelila = f"{self.day_name('ጥር 12')}, ጥር 12"
+        self.mesqel = f"{self.day_name('መስከረም 17')}, መስከረም 17"
+        self.beale_tsinset = f"{self.day_name('መጋቢት 29')}, መጋቢት 29"
+        self.beale_simeon = f"{self.day_name('የካቲት 8')}, የካቲት 8"
+        self.beale_girizat = f"{self.day_name('ጥር 6')}, ጥር 6"
+        self.genbot_lideta = f"{self.day_name('ግንቦት 1')}, ግንቦት 1"
+        self.debre_tabor = f"{self.day_name('ነሐሴ 13')}, ነሐሴ 13"
         self.tsome_lidet = (
-            f"{self.day_name('ህዳር 16')} ህዳር 16"
-            if self.amete_wengel != "ዘመነ ዮሐንስ"
-            else f"{self.day_name('ህዳር 15')} ህዳር 15"
+            f"{self.day_name('ህዳር 16')}, ህዳር 16"
+            if self.aw != "ዘመነ ዮሐንስ"
+            else f"{self.day_name('ህዳር 15')}, ህዳር 15"
         )
         self.day_of_timket = self.day_name("ጥር 11")
-        self.tsome_gehad = (
-            f"{self.day_name('ጥር 10')} ጥር 10"
-            if self.day_of_timket == "አርብ" or self.day_of_timket == "ረቡዕ"
-            else "የለም"
-        )
-        self.tsome_filseta = f"{self.day_name('ነሐሴ 1')} ነሐሴ 1"
-        self.tsome_filseta_mefchiya = f"{self.day_name('ነሐሴ 16')} ነሐሴ 16"
-        self.debre_zeyit = self.findDebireZeyit()
+        self.tsome_filseta = f"{self.day_name('ነሐሴ 1')}, ነሐሴ 1"
+        self.tsome_filseta_mefchiya = f"{self.day_name('ነሐሴ 16')}, ነሐሴ 16"
         self.print_title_list = [
             "እንቁጣጣሽ",
             "መስቅል",
             "የገና ፆም",
             "ገና",
-            "ጾመ ገሃድ",
             "ጥምቀት",
             "ቃና ዘገሊላ",
             "ጾመ ነነዌ",
@@ -102,7 +95,6 @@ class Date:
             self.mesqel,
             self.tsome_lidet,
             self.gena,
-            self.tsome_gehad,
             self.timket,
             self.kana_zegelila,
             self.tsome_nenewe,
@@ -129,7 +121,7 @@ class Date:
         month, day = month_day_string.split()
         return self.name_of_the_day[
             (
-                self.yon[self.new_year_day_name[self.amete_total % 7]]
+                self.yon[self.NYDayName[self.at % 7]]
                 + self.astifeWer[month]
                 + int(day)
             )
@@ -139,25 +131,14 @@ class Date:
     def find_tsome_nenewe(self):
         """The function finds the day of nenewe fasting starts"""
         m, d = self.beale_metqe.split()
-        if int(d) == 0 or int(d) == 30:
-            return f"የካቲት {self.mebaja_hamer}"
-        elif self.mebaja_hamer > 30:
-            return f"የካቲት {self.mebaja_hamer%30}"
-        elif m == "መስከረም":
+        if m == "መስከረም":
             return f"ጥር {self.mebaja_hamer}"
         elif m == "ጥቅምት":
             return f"የካቲት {self.mebaja_hamer}"
-
-    def find_name_of_the_day(self, day, month):
-        """Finds the name of the day like the first function but the parameter is a separated day and month variable"""
-        return self.name_of_the_day[
-            (
-                self.yon[self.new_year_day_name[self.amete_total % 7]]
-                + self.astifeWer[month]
-                + day
-            )
-            % 7
-        ]
+        elif self.mebaja_hamer > 30:
+            return f"የካቲት {self.mebaja_hamer%30}"
+        elif int(d) == 0 or int(d) == 30:
+            return f"የካቲት {self.mebaja_hamer}"
 
     def find_beale_metqe(
         self,
@@ -172,35 +153,26 @@ class Date:
 
     def find_tewsak(self):
         """Finds Tewsak which is needed for further calculation to find the day of the holidays"""
-        m, d = self.beale_metqe.split()
-        return self.elete_tewsag[self.find_name_of_the_day(int(d), m)]
+        return self.elete_tewsag[self.day_name(self.beale_metqe)]
 
-    def day_of_the_holiday(self, beal):
-        """Finds the day of the holiday using a dictionary from below"""
-        day_of_the_holiday = self.eywered_eyareg[beal][0] + self.mebaja_hamer
-        if day_of_the_holiday > 30:
-            day_of_the_holiday = day_of_the_holiday % 30
-        if self.eywered_eyareg[beal][2] <= day_of_the_holiday <= 30:
-            MDHoliday = (
-                f"{self.eywered_eyareg[beal][1][0]} {day_of_the_holiday}"
-            )
-        elif 1 <= day_of_the_holiday <= self.eywered_eyareg[beal][3]:
-            MDHoliday = (
-                f"{self.eywered_eyareg[beal][1][1]} {day_of_the_holiday}"
-            )
-        return f"{self.day_name(MDHoliday)} {MDHoliday}"
-
-    def findDebireZeyit(self):
-        """finds when the day when debre_zeyit Holiday occurs"""
-        month, day = self.find_tsome_nenewe().split()
-        nenewe = int(day) + 41
-        increment = 0
-        while nenewe > 30:
-            nenewe -= 30
-            increment += 1
-        month = self.months[(self.astifeWer[month] / 2) + increment]
-        fullDay = f"{month} {nenewe}"
-        return f"{self.day_name(fullDay)} {month} {nenewe}"
+    def day_of_the_holiday(self, tewsak):
+        """Finds the day of the holiday using tewsak"""
+        m, d = self.tsome_nenewe_.split()
+        Cdate = int(d) + tewsak
+        Mincriment = 0
+        while Cdate > 30:
+            Cdate -= 30
+            Mincriment += 1
+        if tewsak == 14:
+            m = self.months[
+                self.Hmonth[m] + Mincriment
+                if self.Hmonth[m] + Mincriment < 6
+                else 6
+            ]
+        else:
+            m = self.months[self.Hmonth[m] + Mincriment]
+        m_d = f"{m} {Cdate}"
+        return f"{self.day_name(m_d)}, {m_d}"
 
     def print(self):
         """This function is used to print all the calculated holidays from above"""
@@ -225,13 +197,13 @@ class Date:
         "አርብ": 2,
         "ቅዳሜ": 8,
     }
-    amete_wengel_list = {
+    aw_list = {
         0: "ዘመነ ዮሐንስ",
         1: "ዘመነ ማቴዎስ",
         2: "ዘመነ ማርቆስ",
         3: "ዘመነ ሉቃስ",
     }
-    new_year_day_name = {
+    NYDayName = {
         1: "እሁድ",
         2: "ሰኞ",
         3: "ማክሰኞ",
@@ -277,18 +249,20 @@ class Date:
         "ሀምሌ": 22,
         "ነሐሴ": 24,
     }
-    name_of_the_day = new_year_day_name
-    eywered_eyareg = {
-        "abiy_tsom": [14, ["የካቲት", "መጋቢት"], 1, 5],
-        "debre_zeyit": [11, ["የካቲት", "መጋቢት", "ሚያዝያ"], 28, 2],
-        "hosaina": [2, ["መጋቢት", "ሚያዝያ"], 19, 23],
-        "seqlet": [7, ["መጋቢት", "ሚያዝያ"], 24, 28],
-        "fasika": [9, ["መጋቢት", "ሚያዝያ"], 26, 30],
-        "erkibe_kahinat": [3, ["ሚያዝያ", "ግንቦት"], 20, 24],
-        "erget": [18, ["ግንቦት", "ሰኔ"], 5, 9],
-        "peraclitos": [28, ["ግንቦት", "ሰኔ"], 15, 19],
-        "tsome_hawariyat": [29, ["ግንቦት", "ሰኔ"], 16, 20],
-        "tsome_dihinet": [1, ["ግንቦት", "ሰኔ"], 18, 22],
+    name_of_the_day = NYDayName
+    Hmonth = {
+        "መስከረም": 1,
+        "ጥቅምት": 2,
+        "ህዳር": 3,
+        "ታህሳስ": 4,
+        "ጥር": 5,
+        "የካቲት": 6,
+        "መጋቢት": 7,
+        "ሚያዝያ": 8,
+        "ግንቦት": 9,
+        "ሰኔ": 10,
+        "ሀምሌ": 11,
+        "ነሐሴ": 12,
     }
 
 
