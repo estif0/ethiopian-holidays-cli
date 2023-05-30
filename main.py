@@ -13,18 +13,16 @@ class Date:
         self.aa = self.am + 5500
         self.aw, self.mr = [
             self.aw_list[self.aa % 4],
-            self.aa // 4,
+            int(self.aa / 4),
         ]
         self.at = self.aa + self.mr + 2
         self.new_year_day = f"{self.NYDayName[self.at%7]}, {self.months[1]} 1"
         self.medeb = self.aa % 19
         self.wenber = 18 if self.medeb == 0 else self.medeb - 1
         self.abeqte = (
-            (self.wenber * 11) % 30
-            if self.wenber * 11 >= 30
-            else self.wenber * 11
+            (self.wenber * 11) % 30 if self.wenber * 11 >= 30 else self.wenber * 11
         )
-        self.metqe = 30 - self.abeqte
+        self.metqe = abs(30 - self.abeqte)
         self.beale_metqe = self.find_beale_metqe()
         self.tewsak = self.find_tewsak()
         self.mebaja_hamer = (
@@ -33,7 +31,9 @@ class Date:
             else (self.metqe + self.tewsak) % 30
         )
         self.tsome_nenewe_ = self.find_tsome_nenewe()
-        self.tsome_nenewe = f"{self.day_name(self.find_tsome_nenewe())}, {self.find_tsome_nenewe()}"
+        self.tsome_nenewe = (
+            f"{self.day_name(self.find_tsome_nenewe())}, {self.find_tsome_nenewe()}"
+        )
         self.abiy_tsom = self.day_of_the_holiday(14)
         self.debre_zeyit = self.day_of_the_holiday(41)
         self.hosaina = self.day_of_the_holiday(62)
@@ -120,24 +120,20 @@ class Date:
         """The function finds the name of the day like Monday,... when the parameter is a month and day string"""
         month, day = month_day_string.split()
         return self.name_of_the_day[
-            (
-                self.yon[self.NYDayName[self.at % 7]]
-                + self.astifeWer[month]
-                + int(day)
-            )
+            (self.yon[self.NYDayName[self.at % 7]] + self.astifeWer[month] + int(day))
             % 7
         ]
 
     def find_tsome_nenewe(self):
         """The function finds the day of nenewe fasting starts"""
         m, d = self.beale_metqe.split()
-        if m == "መስከረም":
+        if self.mebaja_hamer > 30:
+            return f"የካቲት {self.mebaja_hamer%30}"
+        elif self.metqe == 0 or self.metqe == 30:
+            return f"የካቲት {self.mebaja_hamer}"
+        elif m == "መስከረም":
             return f"ጥር {self.mebaja_hamer}"
         elif m == "ጥቅምት":
-            return f"የካቲት {self.mebaja_hamer}"
-        elif self.mebaja_hamer > 30:
-            return f"የካቲት {self.mebaja_hamer%30}"
-        elif int(d) == 0 or int(d) == 30:
             return f"የካቲት {self.mebaja_hamer}"
 
     def find_beale_metqe(
@@ -165,9 +161,7 @@ class Date:
             Mincriment += 1
         if tewsak == 14:
             m = self.months[
-                self.Hmonth[m] + Mincriment
-                if self.Hmonth[m] + Mincriment < 6
-                else 6
+                self.Hmonth[m] + Mincriment if self.Hmonth[m] + Mincriment < 6 else 6
             ]
         else:
             m = self.months[self.Hmonth[m] + Mincriment]
