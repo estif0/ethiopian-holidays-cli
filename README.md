@@ -1,6 +1,6 @@
 # :calendar: 𝕰𝖙𝖍𝖎𝖔𝖕𝖎𝖆𝖓 𝕱𝖊𝖘𝖙𝖎𝖛𝖆𝖑𝖘 𝕬𝖓𝖉 𝕳𝖔𝖑𝖎𝖉𝖆𝖞𝖘 𝕲𝖊𝖓𝖊𝖗𝖆𝖙𝖔𝖗:calendar:
 
-- This is a python CLI program that generates the dates of main holidays of each year in the ethiopian calendar.
+- A python CLI that generates the dates of main holidays of each year in the ethiopian calendar.
 
 ## Features
 
